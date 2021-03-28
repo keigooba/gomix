@@ -1,18 +1,22 @@
 package change
 
-import "testing"
+import (
+	"testing"
+)
 
-func TestAdd(t *testing.T) {
+func TestChange(t *testing.T) {
 
-	var result int
+	number := 255
 
 	// テストケースの検証
-	result = Add(1, 2)
-	if result != 3 {
-		// error表示
-		t.Errorf("add failed. expect:%d, actual:%d", 3, result)
+	data := Change(number)
+	if data.S2 != "11111111" {
+		t.Errorf("2進数は%sで失敗しています。", data.S2)
+	}
+	if data.S16 != "ff" {
+		t.Errorf("16進数は%sで失敗しています。", data.S16)
 	}
 
 	// t.Log, t.Logf でログを出すと `go test -v` と実行したときのみ表示される
-	t.Logf("result is %d", result)
+	t.Logf("result is %s, %s", data.S2, data.S16)
 }

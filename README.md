@@ -10,3 +10,4 @@ Makefileの作成
 header,footerの切り分け  
 testファイルの作成  
 configファイルの作成  
+golang-lintの導入  

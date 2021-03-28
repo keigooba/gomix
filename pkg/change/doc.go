@@ -2,6 +2,7 @@ package change
 
 import (
 	"fmt"
+	"log"
 	"net/http"
 	"text/template"
 )
@@ -15,5 +16,8 @@ func generateHTML(w http.ResponseWriter, data interface{}, filenames ...string) 
 	files = append(files, "doc/_header.html", "doc/_footer.html")
 
 	templates := template.Must(template.ParseFiles(files...))
-	templates.Execute(w, nil)
+	err := templates.Execute(w, data)
+	if err != nil {
+		log.Println(err)
+	}
 }

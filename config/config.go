@@ -1,6 +1,7 @@
 package config
 
 import (
+	"fmt"
 	"gomix/utils"
 	"log"
 	"time"
@@ -14,33 +15,44 @@ type ConfigList struct {
 	// DbName    string
 	LogFile string
 	Static  string
-	Url     string
+	URL     string
 }
 
+// Config Configの定義
 var Config ConfigList
 
 func init() {
 	// Configの設定の読み込み
-	LoadConfig()
+	err := LoadConfig()
+	if err != nil {
+		log.Println(err)
+	}
 
 	// 現在の日付
-	now_date := time.Now().Format("20060102")
-	utils.LoggingSettings(Config.LogFile + now_date + ".log")
+	nowDate := time.Now().Format("200601")
+	utils.LoggingSettings(Config.LogFile + nowDate + ".log")
 }
 
-func LoadConfig() {
+// LoadConfig Configの設定
+func LoadConfig() error {
 
 	cfg, err := ini.Load("config/config.ini")
 	if err != nil {
-		log.Fatalln(err)
+		return err
 	}
 
 	Config = ConfigList{
-		Port: cfg.Section("web").Key("port").MustString("8080"),
-		// 		SQLDriver: cfg.Section("db").Key("driver").String(),
-		// DbName:    cfg.Section("db").Key("name").String(),
+		Port:    cfg.Section("web").Key("port").String(),
 		LogFile: cfg.Section("web").Key("logfile").String(),
 		Static:  cfg.Section("web").Key("static").String(),
-		Url:     cfg.Section("web").Key("url").String(),
+		URL:     cfg.Section("web").Key("url").String(),
 	}
+
+	// 環境変数の値の判定
+	format := "Port: %s\nLogFile: %s\nStatic: %s\nURL: %s\n"
+	_, err = fmt.Printf(format, Config.Port, Config.LogFile, Config.Static, Config.URL)
+	if err != nil {
+		return err
+	}
+	return nil //自明であればnilにする
 }

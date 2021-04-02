@@ -10,10 +10,10 @@ func TestChange(t *testing.T) {
 
 	// テストケースの検証
 	data := Change(number)
-	if data.S2 != "11111111" {
+	if data.S2 != "「255」2進数:11111111" {
 		t.Errorf("2進数は%sで失敗しています。", data.S2)
 	}
-	if data.S16 != "ff" {
+	if data.S16 != "「255」16進数:ff" {
 		t.Errorf("16進数は%sで失敗しています。", data.S16)
 	}
 

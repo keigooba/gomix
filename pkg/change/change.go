@@ -2,8 +2,14 @@ package change
 
 import (
 	"fmt"
+	"log"
 	"net/http"
+	"regexp"
 	"strconv"
+	"sync"
+	"time"
+
+	"golang.org/x/text/width"
 )
 
 // type Number struct {
@@ -11,19 +17,26 @@ import (
 // }
 
 type Data struct {
-	S2    string
-	S16   string
-	Error Err
+	Numbers []Number
+	Error   Err
+}
+
+type Number struct {
+	S2  string
+	S16 string
 }
 
 type Err struct {
 	Number string
 }
 
-func Change(number int) (data Data) {
-	s2 := fmt.Sprintf("%b", number)
-	s16 := fmt.Sprintf("%x", number)
-	data = Data{
+// 正規表現
+var numReg = regexp.MustCompile(`[0-9０-９]`)
+
+func Change(number int) (data Number) {
+	s2 := fmt.Sprintf("「%v」2進数:%b", number, number)
+	s16 := fmt.Sprintf("「%v」16進数:%x", number, number)
+	data = Number{
 		S2:  s2,
 		S16: s16,
 	}
@@ -37,29 +50,53 @@ func Index(w http.ResponseWriter, r *http.Request) {
 		generateHTML(w, nil, "change/index")
 
 	} else if r.Method == "POST" {
-		// 数値に変換
-		number, err := strconv.Atoi(r.FormValue("number"))
-		if err != nil {
-			// 数値でなければerrorを返す エラーメッセージ作成
-			err := Err{
-				Number: "数値で入力して下さい",
+		var data Data
+		value := r.FormValue("number")
+		// 正規表現を用いて判定
+		if numReg.MatchString(value) {
+			// 全角を半角に変換
+			num := width.Narrow.String(value)
+			// 数値に変換
+			number, err := strconv.Atoi(num)
+			if err != nil {
+				log.Println(err)
 			}
-			// エラーメッセージをdataに格納
-			var data Data
-			data.Error = err
+			workers := 5
+			ch := make(chan int, workers)
+			var numbers []Number
+			var mutex = &sync.Mutex{}
+			defer close(ch)
+
+			// 数値+19の20個まで5つ並行で処理
+			for i := 0; i < workers; i++ {
+				go func() {
+					for num := range ch {
+						number := Change(num)
+						// 処理をロックする
+						mutex.Lock()
+						numbers = append(numbers, number)
+						mutex.Unlock()
+					}
+				}()
+			}
+
+			for i := 0; i < 20; i++ {
+				ch <- number + i
+			}
+
+			// ゴルーチンの処理を1秒待つ
+			time.Sleep(time.Second * 1)
+			data.Numbers = numbers
 			generateHTML(w, data, "change/index")
 		} else {
-			data := Change(number)
+			// 数値でなければerrorを返す エラーメッセージ作成
+			err := Err{
+				Number: "数字を入力して下さい",
+			}
+			// Numberのエラーメッセージをdataに格納
+			data.Error = err
 			generateHTML(w, data, "change/index")
 		}
-		// decoder := json.NewDecoder(r.Body)
-		// fmt.Println(decoder)
-		// var n Number
-		// err := decoder.Decode(&n)
-		// if err != nil {
-		// 	fmt.Println(err)
-		// }
-		// fmt.Println(n.Num)
 
 	}
 }

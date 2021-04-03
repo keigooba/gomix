@@ -2,6 +2,7 @@ package change
 
 import (
 	"fmt"
+	"gomix/pkg"
 	"log"
 	"net/http"
 	"regexp"
@@ -11,10 +12,6 @@ import (
 
 	"golang.org/x/text/width"
 )
-
-// type Number struct {
-// 	Num int `json:"number"`
-// }
 
 type Data struct {
 	Numbers []Number
@@ -47,7 +44,7 @@ func Change(number int) (data Number) {
 func Index(w http.ResponseWriter, r *http.Request) {
 	if r.Method == "GET" {
 		// htmlファイルの読み込み
-		generateHTML(w, nil, "change/index")
+		pkg.GenerateHTML(w, nil, "change/index")
 
 	} else if r.Method == "POST" {
 		var data Data
@@ -87,7 +84,7 @@ func Index(w http.ResponseWriter, r *http.Request) {
 			// ゴルーチンの処理を1秒待つ
 			time.Sleep(time.Second * 1)
 			data.Numbers = numbers
-			generateHTML(w, data, "change/index")
+			pkg.GenerateHTML(w, data, "change/index")
 		} else {
 			// 数値でなければerrorを返す エラーメッセージ作成
 			err := Err{
@@ -95,7 +92,7 @@ func Index(w http.ResponseWriter, r *http.Request) {
 			}
 			// Numberのエラーメッセージをdataに格納
 			data.Error = err
-			generateHTML(w, data, "change/index")
+			pkg.GenerateHTML(w, data, "change/index")
 		}
 
 	}

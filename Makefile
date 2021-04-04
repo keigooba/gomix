@@ -4,6 +4,7 @@ GOBUILD=$(GOCMD) build
 GOCLEAN=$(GOCMD) clean
 GOTEST=$(GOCMD) test
 GOGET=$(GOCMD) get
+GOMOD=$(GOCMD) mod
 BINARY_NAME=gomix
 # BINARY_UINX=$(BINARY_NAME)_unix
 
@@ -15,7 +16,7 @@ test:
 clean:
 	$(GOCLEAN)
 	rm -f $(BINARY_NAME)
-	# rm -f $(BINARY_UINX)
+	$(GOMOD) tidy -v
 run:
 	$(GOBUILD) -o $(BINARY_NAME) -v
 	./$(BINARY_NAME)

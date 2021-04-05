@@ -97,6 +97,8 @@ func Open(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
+//以下機能は主要機能に導入なし
+
 // 一時ディレクトリの作成・削除
 func Dosomething() error {
 	err := os.MkdirAll("newdir", 0755)
@@ -130,7 +132,7 @@ func MytemFile() (*os.File, error) {
 	// defer file.Close() //Closeが遅い deferはfunc()の呼び出し形式を取る 引数にはdeferを呼び出した時点の値が入る
 	Close(file) //Renameを実行するため、すぐ閉じる
 
-	// file.Close()するとwindowsではファイルが開かれていると認識され、Renameできない
+	// defer file.Close()するとwindowsではファイルが開かれていると認識され、Renameできない
 	if err = os.Rename(file.Name(), file.Name()+".go"); err != nil {
 		return nil, err
 	}

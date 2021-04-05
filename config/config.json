@@ -1,0 +1,6 @@
+{
+  "port":":8080",
+  "log_file":"log/system_",
+  "static":"doc",
+  "url":"http://localhost:8080/"
+}

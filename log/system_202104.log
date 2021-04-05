@@ -231,3 +231,597 @@ created by net/http.(*Server).Serve
 2021/04/04 20:18:40 command.go:19: exit status 127
 2021/04/04 20:21:27 command.go:26: exec: already started
 2021/04/04 20:36:56 command.go:32: コマンドが実行されました。
+2021/04/05 14:20:40 server.go:3139: http: panic serving [::1]:63296: runtime error: invalid memory address or nil pointer dereference
+goroutine 5 [running]:
+net/http.(*conn).serve.func1(0xc00007eaa0)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:1824 +0x153
+panic(0x13846c0, 0x1659de0)
+	/usr/local/Cellar/go/1.16.2/libexec/src/runtime/panic.go:971 +0x499
+net/http.serveFile(0x14573c0, 0xc000246000, 0xc000236100, 0x0, 0x0, 0xc0002020c0, 0xe, 0xc00023a001)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/fs.go:597 +0x58
+net/http.(*fileHandler).ServeHTTP(0xc000012af0, 0x14573c0, 0xc000246000, 0xc000236100)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/fs.go:848 +0x9c
+net/http.StripPrefix.func1(0x14573c0, 0xc000246000, 0xc000236000)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:2112 +0x234
+net/http.HandlerFunc.ServeHTTP(0xc000078c30, 0x14573c0, 0xc000246000, 0xc000236000)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:2069 +0x44
+net/http.(*ServeMux).ServeHTTP(0x1667620, 0x14573c0, 0xc000246000, 0xc000236000)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:2448 +0x1ad
+net/http.serverHandler.ServeHTTP(0xc0001bc000, 0x14573c0, 0xc000246000, 0xc000236000)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:2887 +0xa3
+net/http.(*conn).serve(0xc00007eaa0, 0x1457b20, 0xc00002a2c0)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:1952 +0x8cd
+created by net/http.(*Server).Serve
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:3013 +0x39b
+2021/04/05 14:20:40 server.go:3139: http: panic serving [::1]:63297: runtime error: invalid memory address or nil pointer dereference
+goroutine 20 [running]:
+net/http.(*conn).serve.func1(0xc000144460)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:1824 +0x153
+panic(0x13846c0, 0x1659de0)
+	/usr/local/Cellar/go/1.16.2/libexec/src/runtime/panic.go:971 +0x499
+net/http.serveFile(0x14573c0, 0xc000174000, 0xc00014a200, 0x0, 0x0, 0xc000130280, 0xe, 0xc00016a101)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/fs.go:597 +0x58
+net/http.(*fileHandler).ServeHTTP(0xc000012af0, 0x14573c0, 0xc000174000, 0xc00014a200)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/fs.go:848 +0x9c
+net/http.StripPrefix.func1(0x14573c0, 0xc000174000, 0xc00014a100)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:2112 +0x234
+net/http.HandlerFunc.ServeHTTP(0xc000078c30, 0x14573c0, 0xc000174000, 0xc00014a100)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:2069 +0x44
+net/http.(*ServeMux).ServeHTTP(0x1667620, 0x14573c0, 0xc000174000, 0xc00014a100)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:2448 +0x1ad
+net/http.serverHandler.ServeHTTP(0xc0001bc000, 0x14573c0, 0xc000174000, 0xc00014a100)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:2887 +0xa3
+net/http.(*conn).serve(0xc000144460, 0x1457b20, 0xc000150080)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:1952 +0x8cd
+created by net/http.(*Server).Serve
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:3013 +0x39b
+2021/04/05 14:20:43 server.go:3139: http: panic serving [::1]:63298: runtime error: invalid memory address or nil pointer dereference
+goroutine 22 [running]:
+net/http.(*conn).serve.func1(0xc000144500)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:1824 +0x153
+panic(0x13846c0, 0x1659de0)
+	/usr/local/Cellar/go/1.16.2/libexec/src/runtime/panic.go:971 +0x499
+net/http.serveFile(0x14573c0, 0xc0001742a0, 0xc00014a500, 0x0, 0x0, 0xc000130440, 0xe, 0xc00016a301)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/fs.go:597 +0x58
+net/http.(*fileHandler).ServeHTTP(0xc000012af0, 0x14573c0, 0xc0001742a0, 0xc00014a500)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/fs.go:848 +0x9c
+net/http.StripPrefix.func1(0x14573c0, 0xc0001742a0, 0xc00014a400)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:2112 +0x234
+net/http.HandlerFunc.ServeHTTP(0xc000078c30, 0x14573c0, 0xc0001742a0, 0xc00014a400)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:2069 +0x44
+net/http.(*ServeMux).ServeHTTP(0x1667620, 0x14573c0, 0xc0001742a0, 0xc00014a400)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:2448 +0x1ad
+net/http.serverHandler.ServeHTTP(0xc0001bc000, 0x14573c0, 0xc0001742a0, 0xc00014a400)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:2887 +0xa3
+net/http.(*conn).serve(0xc000144500, 0x1457b20, 0xc0001501c0)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:1952 +0x8cd
+created by net/http.(*Server).Serve
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:3013 +0x39b
+2021/04/05 14:20:43 server.go:3139: http: panic serving [::1]:63299: runtime error: invalid memory address or nil pointer dereference
+goroutine 8 [running]:
+net/http.(*conn).serve.func1(0xc00007eb40)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:1824 +0x153
+panic(0x13846c0, 0x1659de0)
+	/usr/local/Cellar/go/1.16.2/libexec/src/runtime/panic.go:971 +0x499
+net/http.serveFile(0x14573c0, 0xc0001bc2a0, 0xc0001c6200, 0x0, 0x0, 0xc000018500, 0xe, 0xc000188201)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/fs.go:597 +0x58
+net/http.(*fileHandler).ServeHTTP(0xc000012af0, 0x14573c0, 0xc0001bc2a0, 0xc0001c6200)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/fs.go:848 +0x9c
+net/http.StripPrefix.func1(0x14573c0, 0xc0001bc2a0, 0xc0001c6100)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:2112 +0x234
+net/http.HandlerFunc.ServeHTTP(0xc000078c30, 0x14573c0, 0xc0001bc2a0, 0xc0001c6100)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:2069 +0x44
+net/http.(*ServeMux).ServeHTTP(0x1667620, 0x14573c0, 0xc0001bc2a0, 0xc0001c6100)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:2448 +0x1ad
+net/http.serverHandler.ServeHTTP(0xc0001bc000, 0x14573c0, 0xc0001bc2a0, 0xc0001c6100)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:2887 +0xa3
+net/http.(*conn).serve(0xc00007eb40, 0x1457b20, 0xc00002a500)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:1952 +0x8cd
+created by net/http.(*Server).Serve
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:3013 +0x39b
+2021/04/05 14:20:44 server.go:3139: http: panic serving [::1]:63300: runtime error: invalid memory address or nil pointer dereference
+goroutine 37 [running]:
+net/http.(*conn).serve.func1(0xc00025a000)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:1824 +0x153
+panic(0x13846c0, 0x1659de0)
+	/usr/local/Cellar/go/1.16.2/libexec/src/runtime/panic.go:971 +0x499
+net/http.serveFile(0x14573c0, 0xc0002462a0, 0xc000236400, 0x0, 0x0, 0xc000202280, 0xe, 0xc00023a201)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/fs.go:597 +0x58
+net/http.(*fileHandler).ServeHTTP(0xc000012af0, 0x14573c0, 0xc0002462a0, 0xc000236400)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/fs.go:848 +0x9c
+net/http.StripPrefix.func1(0x14573c0, 0xc0002462a0, 0xc000236300)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:2112 +0x234
+net/http.HandlerFunc.ServeHTTP(0xc000078c30, 0x14573c0, 0xc0002462a0, 0xc000236300)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:2069 +0x44
+net/http.(*ServeMux).ServeHTTP(0x1667620, 0x14573c0, 0xc0002462a0, 0xc000236300)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:2448 +0x1ad
+net/http.serverHandler.ServeHTTP(0xc0001bc000, 0x14573c0, 0xc0002462a0, 0xc000236300)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:2887 +0xa3
+net/http.(*conn).serve(0xc00025a000, 0x1457b20, 0xc0002001c0)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:1952 +0x8cd
+created by net/http.(*Server).Serve
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:3013 +0x39b
+2021/04/05 14:20:44 server.go:3139: http: panic serving [::1]:63301: runtime error: invalid memory address or nil pointer dereference
+goroutine 28 [running]:
+net/http.(*conn).serve.func1(0xc0001445a0)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:1824 +0x153
+panic(0x13846c0, 0x1659de0)
+	/usr/local/Cellar/go/1.16.2/libexec/src/runtime/panic.go:971 +0x499
+net/http.serveFile(0x14573c0, 0xc000246380, 0xc000236500, 0x0, 0x0, 0xc000202330, 0xe, 0xc00023a401)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/fs.go:597 +0x58
+net/http.(*fileHandler).ServeHTTP(0xc000012af0, 0x14573c0, 0xc000246380, 0xc000236500)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/fs.go:848 +0x9c
+net/http.StripPrefix.func1(0x14573c0, 0xc000246380, 0xc00014a600)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:2112 +0x234
+net/http.HandlerFunc.ServeHTTP(0xc000078c30, 0x14573c0, 0xc000246380, 0xc00014a600)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:2069 +0x44
+net/http.(*ServeMux).ServeHTTP(0x1667620, 0x14573c0, 0xc000246380, 0xc00014a600)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:2448 +0x1ad
+net/http.serverHandler.ServeHTTP(0xc0001bc000, 0x14573c0, 0xc000246380, 0xc00014a600)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:2887 +0xa3
+net/http.(*conn).serve(0xc0001445a0, 0x1457b20, 0xc000150540)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:1952 +0x8cd
+created by net/http.(*Server).Serve
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:3013 +0x39b
+2021/04/05 14:20:44 server.go:3139: http: panic serving [::1]:63302: runtime error: invalid memory address or nil pointer dereference
+goroutine 12 [running]:
+net/http.(*conn).serve.func1(0xc00007ebe0)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:1824 +0x153
+panic(0x13846c0, 0x1659de0)
+	/usr/local/Cellar/go/1.16.2/libexec/src/runtime/panic.go:971 +0x499
+net/http.serveFile(0x14573c0, 0xc000246460, 0xc000236700, 0x0, 0x0, 0xc000202400, 0xe, 0xc00023a501)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/fs.go:597 +0x58
+net/http.(*fileHandler).ServeHTTP(0xc000012af0, 0x14573c0, 0xc000246460, 0xc000236700)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/fs.go:848 +0x9c
+net/http.StripPrefix.func1(0x14573c0, 0xc000246460, 0xc000236600)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:2112 +0x234
+net/http.HandlerFunc.ServeHTTP(0xc000078c30, 0x14573c0, 0xc000246460, 0xc000236600)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:2069 +0x44
+net/http.(*ServeMux).ServeHTTP(0x1667620, 0x14573c0, 0xc000246460, 0xc000236600)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:2448 +0x1ad
+net/http.serverHandler.ServeHTTP(0xc0001bc000, 0x14573c0, 0xc000246460, 0xc000236600)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:2887 +0xa3
+net/http.(*conn).serve(0xc00007ebe0, 0x1457b20, 0xc00002a7c0)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:1952 +0x8cd
+created by net/http.(*Server).Serve
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:3013 +0x39b
+2021/04/05 14:20:44 server.go:3139: http: panic serving [::1]:63303: runtime error: invalid memory address or nil pointer dereference
+goroutine 15 [running]:
+net/http.(*conn).serve.func1(0xc00007ec80)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:1824 +0x153
+panic(0x13846c0, 0x1659de0)
+	/usr/local/Cellar/go/1.16.2/libexec/src/runtime/panic.go:971 +0x499
+net/http.serveFile(0x14573c0, 0xc0001bc540, 0xc0001c6500, 0x0, 0x0, 0xc0000186d0, 0xe, 0xc000188501)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/fs.go:597 +0x58
+net/http.(*fileHandler).ServeHTTP(0xc000012af0, 0x14573c0, 0xc0001bc540, 0xc0001c6500)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/fs.go:848 +0x9c
+net/http.StripPrefix.func1(0x14573c0, 0xc0001bc540, 0xc0001c6400)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:2112 +0x234
+net/http.HandlerFunc.ServeHTTP(0xc000078c30, 0x14573c0, 0xc0001bc540, 0xc0001c6400)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:2069 +0x44
+net/http.(*ServeMux).ServeHTTP(0x1667620, 0x14573c0, 0xc0001bc540, 0xc0001c6400)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:2448 +0x1ad
+net/http.serverHandler.ServeHTTP(0xc0001bc000, 0x14573c0, 0xc0001bc540, 0xc0001c6400)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:2887 +0xa3
+net/http.(*conn).serve(0xc00007ec80, 0x1457b20, 0xc00002a940)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:1952 +0x8cd
+created by net/http.(*Server).Serve
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:3013 +0x39b
+2021/04/05 14:20:55 server.go:3139: http: panic serving [::1]:63305: runtime error: invalid memory address or nil pointer dereference
+goroutine 45 [running]:
+net/http.(*conn).serve.func1(0xc00025a0a0)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:1824 +0x153
+panic(0x13846c0, 0x1659de0)
+	/usr/local/Cellar/go/1.16.2/libexec/src/runtime/panic.go:971 +0x499
+net/http.serveFile(0x14573c0, 0xc000246540, 0xc000236900, 0x0, 0x0, 0xc0002024d0, 0xe, 0xc00023a701)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/fs.go:597 +0x58
+net/http.(*fileHandler).ServeHTTP(0xc000012af0, 0x14573c0, 0xc000246540, 0xc000236900)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/fs.go:848 +0x9c
+net/http.StripPrefix.func1(0x14573c0, 0xc000246540, 0xc000236800)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:2112 +0x234
+net/http.HandlerFunc.ServeHTTP(0xc000078c30, 0x14573c0, 0xc000246540, 0xc000236800)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:2069 +0x44
+net/http.(*ServeMux).ServeHTTP(0x1667620, 0x14573c0, 0xc000246540, 0xc000236800)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:2448 +0x1ad
+net/http.serverHandler.ServeHTTP(0xc0001bc000, 0x14573c0, 0xc000246540, 0xc000236800)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:2887 +0xa3
+net/http.(*conn).serve(0xc00025a0a0, 0x1457b20, 0xc000200640)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:1952 +0x8cd
+created by net/http.(*Server).Serve
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:3013 +0x39b
+2021/04/05 14:20:59 server.go:3139: http: panic serving [::1]:63327: runtime error: invalid memory address or nil pointer dereference
+goroutine 29 [running]:
+net/http.(*conn).serve.func1(0xc000144640)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:1824 +0x153
+panic(0x13846c0, 0x1659de0)
+	/usr/local/Cellar/go/1.16.2/libexec/src/runtime/panic.go:971 +0x499
+net/http.serveFile(0x14573c0, 0xc0001bc700, 0xc0001c6600, 0x0, 0x0, 0xc000018790, 0xe, 0xc000188601)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/fs.go:597 +0x58
+net/http.(*fileHandler).ServeHTTP(0xc000012af0, 0x14573c0, 0xc0001bc700, 0xc0001c6600)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/fs.go:848 +0x9c
+net/http.StripPrefix.func1(0x14573c0, 0xc0001bc700, 0xc00014a800)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:2112 +0x234
+net/http.HandlerFunc.ServeHTTP(0xc000078c30, 0x14573c0, 0xc0001bc700, 0xc00014a800)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:2069 +0x44
+net/http.(*ServeMux).ServeHTTP(0x1667620, 0x14573c0, 0xc0001bc700, 0xc00014a800)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:2448 +0x1ad
+net/http.serverHandler.ServeHTTP(0xc0001bc000, 0x14573c0, 0xc0001bc700, 0xc00014a800)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:2887 +0xa3
+net/http.(*conn).serve(0xc000144640, 0x1457b20, 0xc0001505c0)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:1952 +0x8cd
+created by net/http.(*Server).Serve
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:3013 +0x39b
+2021/04/05 14:20:59 server.go:3139: http: panic serving [::1]:63329: runtime error: invalid memory address or nil pointer dereference
+goroutine 66 [running]:
+net/http.(*conn).serve.func1(0xc0001446e0)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:1824 +0x153
+panic(0x13846c0, 0x1659de0)
+	/usr/local/Cellar/go/1.16.2/libexec/src/runtime/panic.go:971 +0x499
+net/http.serveFile(0x14573c0, 0xc0001bc8c0, 0xc0001c6700, 0x0, 0x0, 0xc000018850, 0xe, 0xc000188801)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/fs.go:597 +0x58
+net/http.(*fileHandler).ServeHTTP(0xc000012af0, 0x14573c0, 0xc0001bc8c0, 0xc0001c6700)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/fs.go:848 +0x9c
+net/http.StripPrefix.func1(0x14573c0, 0xc0001bc8c0, 0xc00014a900)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:2112 +0x234
+net/http.HandlerFunc.ServeHTTP(0xc000078c30, 0x14573c0, 0xc0001bc8c0, 0xc00014a900)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:2069 +0x44
+net/http.(*ServeMux).ServeHTTP(0x1667620, 0x14573c0, 0xc0001bc8c0, 0xc00014a900)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:2448 +0x1ad
+net/http.serverHandler.ServeHTTP(0xc0001bc000, 0x14573c0, 0xc0001bc8c0, 0xc00014a900)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:2887 +0xa3
+net/http.(*conn).serve(0xc0001446e0, 0x1457b20, 0xc000150900)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:1952 +0x8cd
+created by net/http.(*Server).Serve
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:3013 +0x39b
+2021/04/05 14:21:02 server.go:3139: http: panic serving [::1]:63333: runtime error: invalid memory address or nil pointer dereference
+goroutine 52 [running]:
+net/http.(*conn).serve.func1(0xc00007ed20)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:1824 +0x153
+panic(0x13846c0, 0x1659de0)
+	/usr/local/Cellar/go/1.16.2/libexec/src/runtime/panic.go:971 +0x499
+net/http.serveFile(0x14573c0, 0xc000174460, 0xc00014aa00, 0x0, 0x0, 0xc000130630, 0xe, 0xc00016a601)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/fs.go:597 +0x58
+net/http.(*fileHandler).ServeHTTP(0xc000012af0, 0x14573c0, 0xc000174460, 0xc00014aa00)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/fs.go:848 +0x9c
+net/http.StripPrefix.func1(0x14573c0, 0xc000174460, 0xc0001c6a00)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:2112 +0x234
+net/http.HandlerFunc.ServeHTTP(0xc000078c30, 0x14573c0, 0xc000174460, 0xc0001c6a00)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:2069 +0x44
+net/http.(*ServeMux).ServeHTTP(0x1667620, 0x14573c0, 0xc000174460, 0xc0001c6a00)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:2448 +0x1ad
+net/http.serverHandler.ServeHTTP(0xc0001bc000, 0x14573c0, 0xc000174460, 0xc0001c6a00)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:2887 +0xa3
+net/http.(*conn).serve(0xc00007ed20, 0x1457b20, 0xc00002ab40)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:1952 +0x8cd
+created by net/http.(*Server).Serve
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:3013 +0x39b
+2021/04/05 14:21:02 server.go:3139: http: panic serving [::1]:63338: runtime error: invalid memory address or nil pointer dereference
+goroutine 49 [running]:
+net/http.(*conn).serve.func1(0xc00025a140)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:1824 +0x153
+panic(0x13846c0, 0x1659de0)
+	/usr/local/Cellar/go/1.16.2/libexec/src/runtime/panic.go:971 +0x499
+net/http.serveFile(0x14573c0, 0xc0002467e0, 0xc000236b00, 0x0, 0x0, 0xc000202690, 0xe, 0xc00023a901)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/fs.go:597 +0x58
+net/http.(*fileHandler).ServeHTTP(0xc000012af0, 0x14573c0, 0xc0002467e0, 0xc000236b00)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/fs.go:848 +0x9c
+net/http.StripPrefix.func1(0x14573c0, 0xc0002467e0, 0xc000236a00)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:2112 +0x234
+net/http.HandlerFunc.ServeHTTP(0xc000078c30, 0x14573c0, 0xc0002467e0, 0xc000236a00)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:2069 +0x44
+net/http.(*ServeMux).ServeHTTP(0x1667620, 0x14573c0, 0xc0002467e0, 0xc000236a00)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:2448 +0x1ad
+net/http.serverHandler.ServeHTTP(0xc0001bc000, 0x14573c0, 0xc0002467e0, 0xc000236a00)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:2887 +0xa3
+net/http.(*conn).serve(0xc00025a140, 0x1457b20, 0xc000200a40)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:1952 +0x8cd
+created by net/http.(*Server).Serve
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:3013 +0x39b
+2021/04/05 14:21:04 server.go:3139: http: panic serving [::1]:63339: runtime error: invalid memory address or nil pointer dereference
+goroutine 59 [running]:
+net/http.(*conn).serve.func1(0xc00007edc0)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:1824 +0x153
+panic(0x13846c0, 0x1659de0)
+	/usr/local/Cellar/go/1.16.2/libexec/src/runtime/panic.go:971 +0x499
+net/http.serveFile(0x14573c0, 0xc0001bcc40, 0xc0001c6d00, 0x0, 0x0, 0xc000018b10, 0xe, 0xc000188b01)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/fs.go:597 +0x58
+net/http.(*fileHandler).ServeHTTP(0xc000012af0, 0x14573c0, 0xc0001bcc40, 0xc0001c6d00)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/fs.go:848 +0x9c
+net/http.StripPrefix.func1(0x14573c0, 0xc0001bcc40, 0xc0001c6c00)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:2112 +0x234
+net/http.HandlerFunc.ServeHTTP(0xc000078c30, 0x14573c0, 0xc0001bcc40, 0xc0001c6c00)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:2069 +0x44
+net/http.(*ServeMux).ServeHTTP(0x1667620, 0x14573c0, 0xc0001bcc40, 0xc0001c6c00)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:2448 +0x1ad
+net/http.serverHandler.ServeHTTP(0xc0001bc000, 0x14573c0, 0xc0001bcc40, 0xc0001c6c00)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:2887 +0xa3
+net/http.(*conn).serve(0xc00007edc0, 0x1457b20, 0xc00002b000)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:1952 +0x8cd
+created by net/http.(*Server).Serve
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:3013 +0x39b
+2021/04/05 14:21:04 server.go:3139: http: panic serving [::1]:63340: runtime error: invalid memory address or nil pointer dereference
+goroutine 68 [running]:
+net/http.(*conn).serve.func1(0xc000144780)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:1824 +0x153
+panic(0x13846c0, 0x1659de0)
+	/usr/local/Cellar/go/1.16.2/libexec/src/runtime/panic.go:971 +0x499
+net/http.serveFile(0x14573c0, 0xc000174540, 0xc00014ac00, 0x0, 0x0, 0xc000130700, 0xe, 0xc00016a701)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/fs.go:597 +0x58
+net/http.(*fileHandler).ServeHTTP(0xc000012af0, 0x14573c0, 0xc000174540, 0xc00014ac00)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/fs.go:848 +0x9c
+net/http.StripPrefix.func1(0x14573c0, 0xc000174540, 0xc00014ab00)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:2112 +0x234
+net/http.HandlerFunc.ServeHTTP(0xc000078c30, 0x14573c0, 0xc000174540, 0xc00014ab00)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:2069 +0x44
+net/http.(*ServeMux).ServeHTTP(0x1667620, 0x14573c0, 0xc000174540, 0xc00014ab00)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:2448 +0x1ad
+net/http.serverHandler.ServeHTTP(0xc0001bc000, 0x14573c0, 0xc000174540, 0xc00014ab00)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:2887 +0xa3
+net/http.(*conn).serve(0xc000144780, 0x1457b20, 0xc0001509c0)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:1952 +0x8cd
+created by net/http.(*Server).Serve
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:3013 +0x39b
+2021/04/05 14:21:05 server.go:3139: http: panic serving [::1]:63341: runtime error: invalid memory address or nil pointer dereference
+goroutine 70 [running]:
+net/http.(*conn).serve.func1(0xc000144820)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:1824 +0x153
+panic(0x13846c0, 0x1659de0)
+	/usr/local/Cellar/go/1.16.2/libexec/src/runtime/panic.go:971 +0x499
+net/http.serveFile(0x14573c0, 0xc0001bcee0, 0xc0001c6f00, 0x0, 0x0, 0xc000018ce0, 0xe, 0xc000188d01)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/fs.go:597 +0x58
+net/http.(*fileHandler).ServeHTTP(0xc000012af0, 0x14573c0, 0xc0001bcee0, 0xc0001c6f00)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/fs.go:848 +0x9c
+net/http.StripPrefix.func1(0x14573c0, 0xc0001bcee0, 0xc0001c6e00)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:2112 +0x234
+net/http.HandlerFunc.ServeHTTP(0xc000078c30, 0x14573c0, 0xc0001bcee0, 0xc0001c6e00)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:2069 +0x44
+net/http.(*ServeMux).ServeHTTP(0x1667620, 0x14573c0, 0xc0001bcee0, 0xc0001c6e00)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:2448 +0x1ad
+net/http.serverHandler.ServeHTTP(0xc0001bc000, 0x14573c0, 0xc0001bcee0, 0xc0001c6e00)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:2887 +0xa3
+net/http.(*conn).serve(0xc000144820, 0x1457b20, 0xc000150ac0)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:1952 +0x8cd
+created by net/http.(*Server).Serve
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:3013 +0x39b
+2021/04/05 14:21:05 server.go:3139: http: panic serving [::1]:63342: runtime error: invalid memory address or nil pointer dereference
+goroutine 102 [running]:
+net/http.(*conn).serve.func1(0xc00007ef00)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:1824 +0x153
+panic(0x13846c0, 0x1659de0)
+	/usr/local/Cellar/go/1.16.2/libexec/src/runtime/panic.go:971 +0x499
+net/http.serveFile(0x14573c0, 0xc0001bcfc0, 0xc0001c7100, 0x0, 0x0, 0xc000018db0, 0xe, 0xc000188f01)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/fs.go:597 +0x58
+net/http.(*fileHandler).ServeHTTP(0xc000012af0, 0x14573c0, 0xc0001bcfc0, 0xc0001c7100)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/fs.go:848 +0x9c
+net/http.StripPrefix.func1(0x14573c0, 0xc0001bcfc0, 0xc0001c7000)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:2112 +0x234
+net/http.HandlerFunc.ServeHTTP(0xc000078c30, 0x14573c0, 0xc0001bcfc0, 0xc0001c7000)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:2069 +0x44
+net/http.(*ServeMux).ServeHTTP(0x1667620, 0x14573c0, 0xc0001bcfc0, 0xc0001c7000)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:2448 +0x1ad
+net/http.serverHandler.ServeHTTP(0xc0001bc000, 0x14573c0, 0xc0001bcfc0, 0xc0001c7000)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:2887 +0xa3
+net/http.(*conn).serve(0xc00007ef00, 0x1457b20, 0xc00002b800)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:1952 +0x8cd
+created by net/http.(*Server).Serve
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:3013 +0x39b
+2021/04/05 14:21:06 server.go:3139: http: panic serving [::1]:63343: runtime error: invalid memory address or nil pointer dereference
+goroutine 75 [running]:
+net/http.(*conn).serve.func1(0xc0001448c0)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:1824 +0x153
+panic(0x13846c0, 0x1659de0)
+	/usr/local/Cellar/go/1.16.2/libexec/src/runtime/panic.go:971 +0x499
+net/http.serveFile(0x14573c0, 0xc0001747e0, 0xc00014b100, 0x0, 0x0, 0xc000130990, 0xe, 0xc00016ab01)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/fs.go:597 +0x58
+net/http.(*fileHandler).ServeHTTP(0xc000012af0, 0x14573c0, 0xc0001747e0, 0xc00014b100)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/fs.go:848 +0x9c
+net/http.StripPrefix.func1(0x14573c0, 0xc0001747e0, 0xc00014b000)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:2112 +0x234
+net/http.HandlerFunc.ServeHTTP(0xc000078c30, 0x14573c0, 0xc0001747e0, 0xc00014b000)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:2069 +0x44
+net/http.(*ServeMux).ServeHTTP(0x1667620, 0x14573c0, 0xc0001747e0, 0xc00014b000)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:2448 +0x1ad
+net/http.serverHandler.ServeHTTP(0xc0001bc000, 0x14573c0, 0xc0001747e0, 0xc00014b000)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:2887 +0xa3
+net/http.(*conn).serve(0xc0001448c0, 0x1457b20, 0xc000150e00)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:1952 +0x8cd
+created by net/http.(*Server).Serve
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:3013 +0x39b
+2021/04/05 14:21:06 server.go:3139: http: panic serving [::1]:63345: runtime error: invalid memory address or nil pointer dereference
+goroutine 83 [running]:
+net/http.(*conn).serve.func1(0xc00025a1e0)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:1824 +0x153
+panic(0x13846c0, 0x1659de0)
+	/usr/local/Cellar/go/1.16.2/libexec/src/runtime/panic.go:971 +0x499
+net/http.serveFile(0x14573c0, 0xc0001748c0, 0xc00014b200, 0x0, 0x0, 0xc000130a40, 0xe, 0xc00016ac01)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/fs.go:597 +0x58
+net/http.(*fileHandler).ServeHTTP(0xc000012af0, 0x14573c0, 0xc0001748c0, 0xc00014b200)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/fs.go:848 +0x9c
+net/http.StripPrefix.func1(0x14573c0, 0xc0001748c0, 0xc000236c00)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:2112 +0x234
+net/http.HandlerFunc.ServeHTTP(0xc000078c30, 0x14573c0, 0xc0001748c0, 0xc000236c00)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:2069 +0x44
+net/http.(*ServeMux).ServeHTTP(0x1667620, 0x14573c0, 0xc0001748c0, 0xc000236c00)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:2448 +0x1ad
+net/http.serverHandler.ServeHTTP(0xc0001bc000, 0x14573c0, 0xc0001748c0, 0xc000236c00)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:2887 +0xa3
+net/http.(*conn).serve(0xc00025a1e0, 0x1457b20, 0xc000200b00)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:1952 +0x8cd
+created by net/http.(*Server).Serve
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:3013 +0x39b
+2021/04/05 14:22:59 server.go:3139: http: panic serving [::1]:63354: runtime error: invalid memory address or nil pointer dereference
+goroutine 5 [running]:
+net/http.(*conn).serve.func1(0xc000100aa0)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:1824 +0x153
+panic(0x13846c0, 0x1659de0)
+	/usr/local/Cellar/go/1.16.2/libexec/src/runtime/panic.go:971 +0x499
+net/http.serveFile(0x14573c0, 0xc00013c2a0, 0xc000146100, 0x0, 0x0, 0xc0000184f0, 0xe, 0xc00010a201)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/fs.go:597 +0x58
+net/http.(*fileHandler).ServeHTTP(0xc000012af0, 0x14573c0, 0xc00013c2a0, 0xc000146100)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/fs.go:848 +0x9c
+net/http.StripPrefix.func1(0x14573c0, 0xc00013c2a0, 0xc0000d2100)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:2112 +0x234
+net/http.HandlerFunc.ServeHTTP(0xc00007ac30, 0x14573c0, 0xc00013c2a0, 0xc0000d2100)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:2069 +0x44
+net/http.(*ServeMux).ServeHTTP(0x1667620, 0x14573c0, 0xc00013c2a0, 0xc0000d2100)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:2448 +0x1ad
+net/http.serverHandler.ServeHTTP(0xc00013c000, 0x14573c0, 0xc00013c2a0, 0xc0000d2100)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:2887 +0xa3
+net/http.(*conn).serve(0xc000100aa0, 0x1457b20, 0xc00002a2c0)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:1952 +0x8cd
+created by net/http.(*Server).Serve
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:3013 +0x39b
+2021/04/05 14:22:59 server.go:3139: http: panic serving [::1]:63355: runtime error: invalid memory address or nil pointer dereference
+goroutine 34 [running]:
+net/http.(*conn).serve.func1(0xc000192000)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:1824 +0x153
+panic(0x13846c0, 0x1659de0)
+	/usr/local/Cellar/go/1.16.2/libexec/src/runtime/panic.go:971 +0x499
+net/http.serveFile(0x14573c0, 0xc0001bc000, 0xc0001aa100, 0x0, 0x0, 0xc00018a0c0, 0xe, 0xc0001ae101)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/fs.go:597 +0x58
+net/http.(*fileHandler).ServeHTTP(0xc000012af0, 0x14573c0, 0xc0001bc000, 0xc0001aa100)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/fs.go:848 +0x9c
+net/http.StripPrefix.func1(0x14573c0, 0xc0001bc000, 0xc0001aa000)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:2112 +0x234
+net/http.HandlerFunc.ServeHTTP(0xc00007ac30, 0x14573c0, 0xc0001bc000, 0xc0001aa000)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:2069 +0x44
+net/http.(*ServeMux).ServeHTTP(0x1667620, 0x14573c0, 0xc0001bc000, 0xc0001aa000)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:2448 +0x1ad
+net/http.serverHandler.ServeHTTP(0xc00013c000, 0x14573c0, 0xc0001bc000, 0xc0001aa000)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:2887 +0xa3
+net/http.(*conn).serve(0xc000192000, 0x1457b20, 0xc0001800c0)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:1952 +0x8cd
+created by net/http.(*Server).Serve
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:3013 +0x39b
+2021/04/05 14:23:01 server.go:3139: http: panic serving [::1]:63356: runtime error: invalid memory address or nil pointer dereference
+goroutine 22 [running]:
+net/http.(*conn).serve.func1(0xc0000cc460)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:1824 +0x153
+panic(0x13846c0, 0x1659de0)
+	/usr/local/Cellar/go/1.16.2/libexec/src/runtime/panic.go:971 +0x499
+net/http.serveFile(0x14573c0, 0xc0001bc0e0, 0xc0001aa300, 0x0, 0x0, 0xc00018a180, 0xe, 0xc0001ae201)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/fs.go:597 +0x58
+net/http.(*fileHandler).ServeHTTP(0xc000012af0, 0x14573c0, 0xc0001bc0e0, 0xc0001aa300)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/fs.go:848 +0x9c
+net/http.StripPrefix.func1(0x14573c0, 0xc0001bc0e0, 0xc0001aa200)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:2112 +0x234
+net/http.HandlerFunc.ServeHTTP(0xc00007ac30, 0x14573c0, 0xc0001bc0e0, 0xc0001aa200)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:2069 +0x44
+net/http.(*ServeMux).ServeHTTP(0x1667620, 0x14573c0, 0xc0001bc0e0, 0xc0001aa200)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:2448 +0x1ad
+net/http.serverHandler.ServeHTTP(0xc00013c000, 0x14573c0, 0xc0001bc0e0, 0xc0001aa200)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:2887 +0xa3
+net/http.(*conn).serve(0xc0000cc460, 0x1457b20, 0xc0000d8180)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:1952 +0x8cd
+created by net/http.(*Server).Serve
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:3013 +0x39b
+2021/04/05 14:23:01 server.go:3139: http: panic serving [::1]:63357: runtime error: invalid memory address or nil pointer dereference
+goroutine 10 [running]:
+net/http.(*conn).serve.func1(0xc000100b40)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:1824 +0x153
+panic(0x13846c0, 0x1659de0)
+	/usr/local/Cellar/go/1.16.2/libexec/src/runtime/panic.go:971 +0x499
+net/http.serveFile(0x14573c0, 0xc0001bc1c0, 0xc0001aa500, 0x0, 0x0, 0xc00018a250, 0xe, 0xc0001ae301)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/fs.go:597 +0x58
+net/http.(*fileHandler).ServeHTTP(0xc000012af0, 0x14573c0, 0xc0001bc1c0, 0xc0001aa500)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/fs.go:848 +0x9c
+net/http.StripPrefix.func1(0x14573c0, 0xc0001bc1c0, 0xc0001aa400)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:2112 +0x234
+net/http.HandlerFunc.ServeHTTP(0xc00007ac30, 0x14573c0, 0xc0001bc1c0, 0xc0001aa400)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:2069 +0x44
+net/http.(*ServeMux).ServeHTTP(0x1667620, 0x14573c0, 0xc0001bc1c0, 0xc0001aa400)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:2448 +0x1ad
+net/http.serverHandler.ServeHTTP(0xc00013c000, 0x14573c0, 0xc0001bc1c0, 0xc0001aa400)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:2887 +0xa3
+net/http.(*conn).serve(0xc000100b40, 0x1457b20, 0xc000180280)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:1952 +0x8cd
+created by net/http.(*Server).Serve
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:3013 +0x39b
+2021/04/05 14:23:01 server.go:3139: http: panic serving [::1]:63358: runtime error: invalid memory address or nil pointer dereference
+goroutine 11 [running]:
+net/http.(*conn).serve.func1(0xc000100be0)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:1824 +0x153
+panic(0x13846c0, 0x1659de0)
+	/usr/local/Cellar/go/1.16.2/libexec/src/runtime/panic.go:971 +0x499
+net/http.serveFile(0x14573c0, 0xc0001bc460, 0xc0001aa800, 0x0, 0x0, 0xc00018a400, 0xe, 0xc0001ae501)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/fs.go:597 +0x58
+net/http.(*fileHandler).ServeHTTP(0xc000012af0, 0x14573c0, 0xc0001bc460, 0xc0001aa800)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/fs.go:848 +0x9c
+net/http.StripPrefix.func1(0x14573c0, 0xc0001bc460, 0xc0001aa700)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:2112 +0x234
+net/http.HandlerFunc.ServeHTTP(0xc00007ac30, 0x14573c0, 0xc0001bc460, 0xc0001aa700)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:2069 +0x44
+net/http.(*ServeMux).ServeHTTP(0x1667620, 0x14573c0, 0xc0001bc460, 0xc0001aa700)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:2448 +0x1ad
+net/http.serverHandler.ServeHTTP(0xc00013c000, 0x14573c0, 0xc0001bc460, 0xc0001aa700)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:2887 +0xa3
+net/http.(*conn).serve(0xc000100be0, 0x1457b20, 0xc00002a5c0)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:1952 +0x8cd
+created by net/http.(*Server).Serve
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:3013 +0x39b
+2021/04/05 14:23:01 server.go:3139: http: panic serving [::1]:63359: runtime error: invalid memory address or nil pointer dereference
+goroutine 30 [running]:
+net/http.(*conn).serve.func1(0xc0000cc500)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:1824 +0x153
+panic(0x13846c0, 0x1659de0)
+	/usr/local/Cellar/go/1.16.2/libexec/src/runtime/panic.go:971 +0x499
+net/http.serveFile(0x14573c0, 0xc0000fc380, 0xc0000d2600, 0x0, 0x0, 0xc0000b8470, 0xe, 0xc0000f2301)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/fs.go:597 +0x58
+net/http.(*fileHandler).ServeHTTP(0xc000012af0, 0x14573c0, 0xc0000fc380, 0xc0000d2600)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/fs.go:848 +0x9c
+net/http.StripPrefix.func1(0x14573c0, 0xc0000fc380, 0xc0000d2400)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:2112 +0x234
+net/http.HandlerFunc.ServeHTTP(0xc00007ac30, 0x14573c0, 0xc0000fc380, 0xc0000d2400)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:2069 +0x44
+net/http.(*ServeMux).ServeHTTP(0x1667620, 0x14573c0, 0xc0000fc380, 0xc0000d2400)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:2448 +0x1ad
+net/http.serverHandler.ServeHTTP(0xc00013c000, 0x14573c0, 0xc0000fc380, 0xc0000d2400)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:2887 +0xa3
+net/http.(*conn).serve(0xc0000cc500, 0x1457b20, 0xc0000d8680)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:1952 +0x8cd
+created by net/http.(*Server).Serve
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:3013 +0x39b
+2021/04/05 14:23:03 server.go:3139: http: panic serving [::1]:63360: runtime error: invalid memory address or nil pointer dereference
+goroutine 16 [running]:
+net/http.(*conn).serve.func1(0xc000100c80)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:1824 +0x153
+panic(0x13846c0, 0x1659de0)
+	/usr/local/Cellar/go/1.16.2/libexec/src/runtime/panic.go:971 +0x499
+net/http.serveFile(0x14573c0, 0xc00013c8c0, 0xc000146600, 0x0, 0x0, 0xc000018890, 0xe, 0xc00010a601)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/fs.go:597 +0x58
+net/http.(*fileHandler).ServeHTTP(0xc000012af0, 0x14573c0, 0xc00013c8c0, 0xc000146600)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/fs.go:848 +0x9c
+net/http.StripPrefix.func1(0x14573c0, 0xc00013c8c0, 0xc000146500)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:2112 +0x234
+net/http.HandlerFunc.ServeHTTP(0xc00007ac30, 0x14573c0, 0xc00013c8c0, 0xc000146500)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:2069 +0x44
+net/http.(*ServeMux).ServeHTTP(0x1667620, 0x14573c0, 0xc00013c8c0, 0xc000146500)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:2448 +0x1ad
+net/http.serverHandler.ServeHTTP(0xc00013c000, 0x14573c0, 0xc00013c8c0, 0xc000146500)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:2887 +0xa3
+net/http.(*conn).serve(0xc000100c80, 0x1457b20, 0xc00002a8c0)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:1952 +0x8cd
+created by net/http.(*Server).Serve
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:3013 +0x39b
+2021/04/05 14:23:03 server.go:3139: http: panic serving [::1]:63361: runtime error: invalid memory address or nil pointer dereference
+goroutine 43 [running]:
+net/http.(*conn).serve.func1(0xc0001920a0)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:1824 +0x153
+panic(0x13846c0, 0x1659de0)
+	/usr/local/Cellar/go/1.16.2/libexec/src/runtime/panic.go:971 +0x499
+net/http.serveFile(0x14573c0, 0xc0001bc540, 0xc0001aaa00, 0x0, 0x0, 0xc00018a4d0, 0xe, 0xc0001ae701)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/fs.go:597 +0x58
+net/http.(*fileHandler).ServeHTTP(0xc000012af0, 0x14573c0, 0xc0001bc540, 0xc0001aaa00)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/fs.go:848 +0x9c
+net/http.StripPrefix.func1(0x14573c0, 0xc0001bc540, 0xc0001aa900)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:2112 +0x234
+net/http.HandlerFunc.ServeHTTP(0xc00007ac30, 0x14573c0, 0xc0001bc540, 0xc0001aa900)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:2069 +0x44
+net/http.(*ServeMux).ServeHTTP(0x1667620, 0x14573c0, 0xc0001bc540, 0xc0001aa900)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:2448 +0x1ad
+net/http.serverHandler.ServeHTTP(0xc00013c000, 0x14573c0, 0xc0001bc540, 0xc0001aa900)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:2887 +0xa3
+net/http.(*conn).serve(0xc0001920a0, 0x1457b20, 0xc000180680)
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:1952 +0x8cd
+created by net/http.(*Server).Serve
+	/usr/local/Cellar/go/1.16.2/libexec/src/net/http/server.go:3013 +0x39b

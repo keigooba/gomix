@@ -4,21 +4,24 @@
 package config
 
 import (
+	"encoding/json"
 	"fmt"
 	"gomix/utils"
 	"log"
+	"os"
+	"path/filepath"
 	"time"
 
-	ini "gopkg.in/ini.v1"
+	"github.com/markbates/pkger"
 )
 
 type ConfigList struct {
-	Port string
+	Port string `json:"port"`
 	// SQLDriver string
 	// DbName    string
-	LogFile string
-	Static  string
-	URL     string
+	LogFile string `json:"log_file"`
+	Static  string `json:"static"`
+	URL     string `json:"url"`
 }
 
 // Config Configの定義
@@ -48,17 +51,32 @@ func init() {
 // LoadConfig Configの設定
 func LoadConfig() error {
 
-	cfg, err := ini.Load("config/config.ini")
+	cwd, err := os.Getwd()
+	if err != nil {
+		return err
+	}
+	fname := filepath.Join(cwd, "config", "config.json")
+	f, err := pkger.Open(fname)
 	if err != nil {
 		return err
 	}
 
-	Config = ConfigList{
-		Port:    cfg.Section("web").Key("port").String(),
-		LogFile: cfg.Section("web").Key("logfile").String(),
-		Static:  cfg.Section("web").Key("static").String(),
-		URL:     cfg.Section("web").Key("url").String(),
+	defer func() {
+		err := f.Close()
+		if err != nil {
+			log.Println(err)
+		}
+	}()
+
+	//Configにconfig.jsonを読み込む
+	err = json.NewDecoder(f).Decode(&Config)
+	if err != nil {
+		return err
 	}
+	// 読み込んだデータをインデント付きのjsonデータで返す
+	// b, _ := json.MarshalIndent(&Config, "", "  ")
+	// b, _ := json.Marshal(&Config) //普通に読み込む
+	// fmt.Println(string(b))
 
 	// 環境変数の値の判定
 	format := "Port: %s\nLogFile: %s\nStatic: %s\nURL: %s\n"

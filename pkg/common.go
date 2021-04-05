@@ -8,6 +8,9 @@ import (
 	"text/template"
 )
 
+func Index(w http.ResponseWriter, _ *http.Request) {
+	GenerateHTML(w, nil, "index")
+}
 
 func Getpath() (cwd string) {
 	cwd, err := os.Getwd()

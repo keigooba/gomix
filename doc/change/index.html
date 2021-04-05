@@ -1,5 +1,5 @@
 {{template "header"}}
-<h1 class="text-center mt-4 pt-4">2進数・16進数変換</h1>
+<h1>2進数・16進数変換</h1>
 <form class="form-signin center" role="form" action="/change" method="post">
   <p>入力数値+19の全ての結果を表示します。</p>
   <input type="text" name="number" class="form-control" placeholder="数字を入力" required autofocus>
@@ -10,7 +10,7 @@
   <button class="btn btn-lg btn-primary btn-block mb-4" type="submit">送信</button>
 </form>
 {{if .Numbers}}
-<div class="text-center">
+<div>
   <h1>結果</h1>
   {{range .Numbers}}
   <p>{{.S2}}

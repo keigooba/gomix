@@ -1,11 +1,11 @@
 {{template "header"}}
-<h1 class="text-center mt-4 pt-4">メモ帳作成</h1>
-<form class="text-center" role="form" action="/memo" method="post">
+<h1>メモ帳作成</h1>
+<form role="form" action="/memo" method="post">
   <textarea  class="mt-4" name="memo" rows="4" cols="100" required autofocus></textarea>
   <button class="btn btn-lg btn-primary btn-block mt-4 mb-4 w-25 mx-auto" type="submit">送信</button>
 </form>
 {{if .File}}
-<div class="text-center">
+<div>
   <h1>作成済みメモ</h1>
   {{range $key, $value := .File}}
   {{$key}} : <a href="/data/{{$value}}">{{$value}}</a>

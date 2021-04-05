@@ -223,6 +223,11 @@ created by net/http.(*Server).Serve
 2021/04/04 15:50:52 memo.go:29: ここ
 [33mWARN[0m[0005] ささ
 2021/04/04 15:51:01 memo.go:29: ここ
-[33mWARN[0m[0014] ささ                                           
+[33mWARN[0m[0014] ささ
 2021/04/04 19:01:10 memo.go:29: ここ
-[33mWARN[0m[11423] ささ                                           
+[33mWARN[0m[11423] ささ
+2021/04/04 20:16:45 command.go:23: exit status 127
+2021/04/04 20:16:45 command.go:27: exec: already started
+2021/04/04 20:18:40 command.go:19: exit status 127
+2021/04/04 20:21:27 command.go:26: exec: already started
+2021/04/04 20:36:56 command.go:32: コマンドが実行されました。

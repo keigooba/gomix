@@ -1,25 +1,29 @@
 package memo
 
 import (
-	"fmt"
 	"io"
 	"io/ioutil"
 	"log"
 	"net/http"
 	"os"
-	"os/exec"
 	"path"
 	"path/filepath"
 	"strconv"
 	"time"
 
 	"gomix/pkg"
-
-	"golang.org/x/text/encoding/japanese"
 )
 
 type Data struct {
 	File []string
+}
+
+// File.Closeのエラーチェックを行う為、定義
+func Close(f *os.File) {
+	err := f.Close()
+	if err != nil {
+		log.Println(err)
+	}
 }
 
 func Index(w http.ResponseWriter, r *http.Request) {
@@ -63,7 +67,7 @@ func Index(w http.ResponseWriter, r *http.Request) {
 		if err != nil {
 			log.Println(err)
 		}
-		defer f.Close()
+		defer Close(f)
 
 		_, err = io.Copy(w, f) //Writerにファイルを書き出す
 		if err != nil {
@@ -85,7 +89,7 @@ func Open(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		log.Println(err)
 	}
-	defer f.Close()
+	defer Close(f)
 
 	_, err = io.Copy(w, f) //Writerにファイルを書き出す
 	if err != nil {
@@ -100,14 +104,20 @@ func Dosomething() error {
 		log.Println(err)
 	}
 	//  (2)ディレクトリ削除
-	defer os.RemoveAll("newdir")
+	defer func() {
+		err := os.RemoveAll("newdir")
+		if err != nil {
+			log.Println(err)
+		}
+	}()
 
 	f, err := os.Create("newdir/newfile")
 	if err != nil {
 		log.Println(err)
 	}
 	// (1)ファイルハンドルが閉じられる
-	defer f.Close()
+	defer Close(f)
+
 	return nil
 }
 
@@ -118,26 +128,11 @@ func MytemFile() (*os.File, error) {
 		return nil, err
 	}
 	// defer file.Close() //Closeが遅い deferはfunc()の呼び出し形式を取る 引数にはdeferを呼び出した時点の値が入る
-	file.Close() //Renameを実行するため、すぐ閉じる
+	Close(file) //Renameを実行するため、すぐ閉じる
 
 	// file.Close()するとwindowsではファイルが開かれていると認識され、Renameできない
 	if err = os.Rename(file.Name(), file.Name()+".go"); err != nil {
 		return nil, err
 	}
 	return file, nil
-}
-
-// commandの実行
-func Command() {
-	cmd := exec.Command("pwd")
-	b, err := cmd.CombinedOutput()
-	if err != nil {
-		log.Fatal(err)
-	}
-	// windowsでのコマンド実行の文字列はCP932のため、UTF-8に変換して受け取る
-	b, err = japanese.ShiftJIS.NewDecoder().Bytes(b)
-	if err != nil {
-		log.Fatal(err)
-	}
-	fmt.Println(string(b))
 }

@@ -1,3 +1,6 @@
+// +build darwin,amd64 windows linux,!android
+// +build go1.1
+
 package config
 
 import (
@@ -25,12 +28,21 @@ func init() {
 	// Configの設定の読み込み
 	err := LoadConfig()
 	if err != nil {
-		log.Println(err)
+		log.Fatal(err)
 	}
 
 	// 現在の日付
 	nowDate := time.Now().Format("200601")
-	utils.LoggingSettings(Config.LogFile + nowDate + ".log")
+	// ログファイルの設定
+	err = utils.LoggingSettings(Config.LogFile + nowDate + ".log")
+	if err != nil {
+		log.Fatal(err)
+	}
+	// コマンドの実行
+	err = utils.Command()
+	if err != nil {
+		log.Fatal(err)
+	}
 }
 
 // LoadConfig Configの設定

@@ -10,10 +10,10 @@ import (
 )
 
 // LoggingSettings ログファイルの出力
-func LoggingSettings(logFile string) {
+func LoggingSettings(logFile string) error {
 	logfile, err := os.OpenFile(logFile, os.O_RDWR|os.O_CREATE|os.O_APPEND, 0666)
 	if err != nil {
-		log.Fatalln(err)
+		return err
 	}
 	multiLogFile := io.MultiWriter(os.Stdout, logfile)
 	log.SetFlags(log.Ldate | log.Ltime | log.Lshortfile)
@@ -23,4 +23,6 @@ func LoggingSettings(logFile string) {
 	logrus.SetFormatter(&logrus.TextFormatter{ForceColors: true})
 	logrus.SetOutput(colorable.NewColorableStdout())
 	logrus.SetLevel(logrus.WarnLevel)
+
+	return nil
 }

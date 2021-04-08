@@ -18,6 +18,9 @@ func StartMainServer() error {
 	dir := pkger.Dir(config.Config.Static) //バイナリファイルに静的ファイルを埋め込める
 	files := http.FileServer(http.Dir(dir))
 	http.Handle("/static/", http.StripPrefix("/static/", files))
+	http.HandleFunc("/json", func(w http.ResponseWriter, r *http.Request) {
+		http.ServeFile(w, r, "config/info.json") //ファイルにアクセス
+	})
 
 	http.HandleFunc("/", pkg.Index)
 	http.HandleFunc("/change", change.Index)

@@ -2,6 +2,7 @@ package pkg
 
 import (
 	"fmt"
+	"gomix/config"
 	"log"
 	"net/http"
 	"os"
@@ -13,11 +14,11 @@ import (
 func Index(w http.ResponseWriter, _ *http.Request) {
 	// 最新版バージョンチェック
 	upVersion := "0.1.0" //buildされるアプリケーションのバージョン
-	metaTag := &latest.HTMLMeta{
-		URL:  "http://localhost:8080/",
-		Name: "gomix",
+	json := &latest.JSON{
+		// JSONを返すURL
+		URL: config.Config.URL + "json",
 	}
-	res, _ := latest.Check(metaTag, upVersion)
+	res, _ := latest.Check(json, upVersion)
 	if res.Outdated {
 		fmt.Printf("%s is not latest, you should upgrade to %s: %s\n", upVersion, res.Current, res.Meta.Message)
 	}

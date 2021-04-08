@@ -5,7 +5,7 @@ import (
 	"fmt"
 )
 
-// Gitリポジトリの最新バージョン
+// Gitリポジトリの最新バージョン start.shで更新される
 var version = "1.0.0"
 
 func main() {

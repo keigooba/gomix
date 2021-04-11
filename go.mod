@@ -7,6 +7,7 @@ require (
 	github.com/google/go-github v17.0.0+incompatible // indirect
 	github.com/google/go-querystring v1.1.0 // indirect
 	github.com/hashicorp/go-version v1.3.0 // indirect
+	github.com/jinzhu/gorm v1.9.16
 	github.com/kr/pretty v0.2.0 // indirect
 	github.com/markbates/pkger v0.17.1
 	github.com/mattn/go-colorable v0.1.8

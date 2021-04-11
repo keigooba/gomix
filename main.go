@@ -3,6 +3,8 @@ package main
 import (
 	"flag"
 	"fmt"
+	"gomix/config"
+	"gomix/pkg/memo"
 )
 
 // Gitリポジトリの最新バージョン start.shで更新される
@@ -19,6 +21,9 @@ func main() {
 		// バージョン番号を表示する
 		fmt.Println("version", version)
 	}
+
+	// マイグレーション
+	config.Db.AutoMigrate(&memo.Memo{})
 
 	// エントリーポイントの設定・サーバー起動
 	err := StartMainServer()

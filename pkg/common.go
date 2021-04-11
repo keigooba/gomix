@@ -47,3 +47,11 @@ func GenerateHTML(w http.ResponseWriter, data interface{}, filenames ...string) 
 		log.Println(err)
 	}
 }
+
+// File.Closeのエラーチェックを行う為、定義
+func Close(f *os.File) {
+	err := f.Close()
+	if err != nil {
+		log.Println(err)
+	}
+}

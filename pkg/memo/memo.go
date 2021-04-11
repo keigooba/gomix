@@ -9,21 +9,16 @@ import (
 	"path"
 	"path/filepath"
 	"strconv"
+	"strings"
 	"time"
 
+	"gomix/config"
 	"gomix/pkg"
 )
 
 type Data struct {
-	File []string
-}
-
-// File.Closeのエラーチェックを行う為、定義
-func Close(f *os.File) {
-	err := f.Close()
-	if err != nil {
-		log.Println(err)
-	}
+	Json []string
+	Txt  []string
 }
 
 func Index(w http.ResponseWriter, r *http.Request) {
@@ -31,18 +26,34 @@ func Index(w http.ResponseWriter, r *http.Request) {
 
 		var data Data
 		// 作成済みファイルを読み込む
-		if files, err := ioutil.ReadDir("doc/memo/data"); err == nil {
-			for _, file := range files {
-				data.File = append(data.File, file.Name())
+		slice := []string{"json", "txt"}
+		for _, extension := range slice {
+			if files, err := ioutil.ReadDir("doc/memo/data/" + extension); err == nil {
+				for _, file := range files {
+					if extension == "json" {
+						data.Json = append(data.Json, file.Name())
+					} else if extension == "txt" {
+						data.Txt = append(data.Txt, file.Name())
+					}
+				}
 			}
 		}
-		// htmlファイルの読み込み
+
+		// ファイルの読み込み
 		pkg.GenerateHTML(w, data, "memo/index")
 
 	} else if r.Method == "POST" {
 
+		memo := r.PostFormValue("memo")
+		var extension string
+		if string(memo[0]) == "[" {
+			extension = "json"
+		} else {
+			extension = "txt"
+		}
+
 		// "/"でパス文字列を結合しない 物理パスを操作する場合filepathを使う
-		dir := filepath.Join(pkg.Getpath(), "doc", "memo", "data")
+		dir := filepath.Join(pkg.Getpath(), "doc", "memo", "data", extension)
 		// dirのディレクトリを作成する MkdirAll 必要な親ディレクトリ全てを作成する
 		err := os.MkdirAll(dir, 0755)
 		if err != nil {
@@ -52,44 +63,38 @@ func Index(w http.ResponseWriter, r *http.Request) {
 		// 以降はパスを物理パスとして扱うのでfilepathパッケージを使う filepath.Base ファイル名を得る
 		time := time.Now().Unix()
 		stringTime := strconv.FormatInt(time, 10)
-		docPath := "/doc/memo/data/" + "memo_" + stringTime + ".html"
-		name := filepath.Join(pkg.Getpath(), "doc", "memo", "data", filepath.Base(docPath))
-		memo := r.FormValue("memo")
-
-		//ファイルに書き込む
+		docPath := "/doc/memo/data/" + "memo_" + stringTime + "." + extension
+		name := filepath.Join(pkg.Getpath(), "doc", "memo", "data", extension, filepath.Base(docPath))
 		err = ioutil.WriteFile(name, []byte(memo), 0664)
 		if err != nil {
 			log.Println(err)
 		}
-
-		// ファイルを開く
-		f, err := os.Open(name)
-		if err != nil {
-			log.Println(err)
-		}
-		defer Close(f)
-
-		_, err = io.Copy(w, f) //Writerにファイルを書き出す
-		if err != nil {
-			log.Println("ファイルの書き出しに失敗しました。")
-		}
+		url := config.Config.URL + r.URL.Path
+		http.Redirect(w, r, url, http.StatusSeeOther) //キャッシュを残したくないので、303指定
 	}
 }
 
 func Open(w http.ResponseWriter, r *http.Request) {
 	// httpリクエストは論理パスなのでpathを使う
-	if ok, err := path.Match("/data/memo_*.html", r.URL.Path); err != nil || !ok {
+	var extension string
+	if strings.Contains(r.URL.Path, "json") {
+		extension = "json"
+	} else if strings.Contains(r.URL.Path, "txt") {
+		extension = "txt"
+	}
+
+	if ok, err := path.Match("/data/"+extension+"/memo_*."+extension, r.URL.Path); err != nil || !ok {
 		http.NotFound(w, r)
 		return
 	}
 
 	// 指定したファイルを開く
-	name := filepath.Join(pkg.Getpath(), "doc", "memo", "data", filepath.Base(r.URL.Path))
+	name := filepath.Join(pkg.Getpath(), "doc", "memo", "data", extension, filepath.Base(r.URL.Path))
 	f, err := os.Open(name)
 	if err != nil {
 		log.Println(err)
 	}
-	defer Close(f)
+	defer pkg.Close(f)
 
 	_, err = io.Copy(w, f) //Writerにファイルを書き出す
 	if err != nil {
@@ -118,7 +123,7 @@ func Dosomething() error {
 		log.Println(err)
 	}
 	// (1)ファイルハンドルが閉じられる
-	defer Close(f)
+	defer pkg.Close(f)
 
 	return nil
 }
@@ -130,7 +135,7 @@ func MytemFile() (*os.File, error) {
 		return nil, err
 	}
 	// defer file.Close() //Closeが遅い deferはfunc()の呼び出し形式を取る 引数にはdeferを呼び出した時点の値が入る
-	Close(file) //Renameを実行するため、すぐ閉じる
+	pkg.Close(file) //Renameを実行するため、すぐ閉じる
 
 	// defer file.Close()するとwindowsではファイルが開かれていると認識され、Renameできない
 	if err = os.Rename(file.Name(), file.Name()+".go"); err != nil {

@@ -12,13 +12,12 @@ import (
 	"path/filepath"
 	"time"
 
+	"github.com/jinzhu/gorm"
 	"github.com/markbates/pkger"
 )
 
 type ConfigList struct {
-	Port string `json:"port"`
-	// SQLDriver string
-	// DbName    string
+	Port    string `json:"port"`
 	LogFile string `json:"log_file"`
 	Static  string `json:"static"`
 	URL     string `json:"url"` //本番時up_urlに変更
@@ -26,6 +25,8 @@ type ConfigList struct {
 
 // Config Configの定義
 var Config ConfigList
+
+var Db *gorm.DB
 
 func init() {
 	// Configの設定の読み込み
@@ -46,6 +47,10 @@ func init() {
 	if err != nil {
 		log.Fatal(err)
 	}
+
+	// DB接続
+	Db = utils.GormConnect()
+
 }
 
 // LoadConfig Configの設定
@@ -73,10 +78,6 @@ func LoadConfig() error {
 	if err != nil {
 		return err
 	}
-	// 読み込んだデータをインデント付きのjsonデータで返す
-	// b, _ := json.MarshalIndent(&Config, "", "  ")
-	// b, _ := json.Marshal(&Config) //普通に読み込む
-	// fmt.Println(string(b))
 
 	// 環境変数の値の判定
 	format := "Port: %s\nLogFile: %s\nStatic: %s\nURL: %s\n"

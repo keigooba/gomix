@@ -7,7 +7,6 @@ import (
 	"gomix/pkg"
 	"gomix/pkg/change"
 	"gomix/pkg/memo"
-	"gomix/pkg/stdin"
 	"net/http"
 
 	stats_api "github.com/fukata/golang-stats-api-handler"
@@ -15,6 +14,7 @@ import (
 )
 
 func StartMainServer() error {
+
 	// doc以下のファイル読み込み
 	dir := pkger.Dir(config.Config.Static) //バイナリファイルに静的ファイルを埋め込める
 	files := http.FileServer(http.Dir(dir))
@@ -26,7 +26,7 @@ func StartMainServer() error {
 	http.HandleFunc("/", pkg.Index)
 	http.HandleFunc("/change", change.Index)
 	http.HandleFunc("/memo", memo.Index)
-	http.HandleFunc("/stdin", stdin.Index)
+	http.HandleFunc("/read", memo.ReadJson)
 	http.HandleFunc("/data/", memo.Open)
 	http.HandleFunc("/stats", stats_api.Handler)
 	return http.ListenAndServe(config.Config.Port, nil)

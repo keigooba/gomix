@@ -37,7 +37,7 @@ func ReadJson(w http.ResponseWriter, r *http.Request) {
 			}
 			defer pkg.Close(f)
 
-			//標準入力をバッファリングする
+			//出力ファイルをバッファリングする
 			reader := bufio.NewReader(f)
 			// 先頭の1byteを覗き見る
 			b, _ := reader.Peek(1)

@@ -25,6 +25,7 @@
    - ディレクトリの自動作成・Unix タイムを用いてファイル名を動的変更
    - ioutil.ReadDir のディレクトリ検索・path.Match のファイル名一致
    - JSON形式で入力したファイルをgormを使用し、DB保存
+   - バッファリング、go-isattyによる出力先の判別
    <ul>
     <li><strong>入力した内容がメモとして記録されます</strong></li>
     <li><strong>JSON形式で入力したファイルはDBに保存できます</strong></li>

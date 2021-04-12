@@ -1,6 +1,7 @@
 package memo
 
 import (
+	"bufio"
 	"io"
 	"io/ioutil"
 	"log"
@@ -14,6 +15,8 @@ import (
 
 	"gomix/config"
 	"gomix/pkg"
+
+	"github.com/mattn/go-isatty"
 )
 
 type Data struct {
@@ -96,7 +99,15 @@ func Open(w http.ResponseWriter, r *http.Request) {
 	}
 	defer pkg.Close(f)
 
-	_, err = io.Copy(w, f) //Writerにファイルを書き出す
+	if isatty.IsTerminal(f.Fd()) { //.Fd()で端末か判定
+		// 出力先が端末
+		_, err = io.Copy(w, f) //Writerにファイルを書き出す
+	} else {
+		//出力先がファイルやパイプ
+		b := bufio.NewWriter(w) //バッファリングする
+		_, err = io.Copy(b, f)  //Writerにファイルを書き出す
+	}
+
 	if err != nil {
 		log.Println("ファイルの書き出しに失敗しました。")
 	}

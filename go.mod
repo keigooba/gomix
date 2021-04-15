@@ -3,6 +3,7 @@ module gomix
 go 1.15
 
 require (
+	github.com/dustin/go-humanize v1.0.0
 	github.com/fukata/golang-stats-api-handler v1.0.0
 	github.com/google/go-github v17.0.0+incompatible // indirect
 	github.com/google/go-querystring v1.1.0 // indirect
@@ -12,6 +13,7 @@ require (
 	github.com/markbates/pkger v0.17.1
 	github.com/mattn/go-colorable v0.1.8
 	github.com/mattn/go-isatty v0.0.12
+	github.com/mattn/go-shellwords v1.0.11
 	github.com/rakyll/statik v0.1.7
 	github.com/sirupsen/logrus v1.8.1
 	github.com/tcnksm/go-latest v0.0.0-20170313132115-e3007ae9052e

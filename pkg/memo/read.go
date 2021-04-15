@@ -46,14 +46,15 @@ func ReadJson(w http.ResponseWriter, r *http.Request) {
 				dec := json.NewDecoder(reader)
 				if err := dec.Decode(&memoJson); err != nil {
 					log.Println(err)
-				}
-				for _, v := range memoJson {
-					// 構造体のインスタンス化
-					memoEx := Memo{}
-					memoEx.Name = v.Name
-					memoEx.Text = v.Text
-					memoEx.CreatedAt = time.Now()
-					config.Db.Create(&memoEx)
+				} else {
+					for _, v := range memoJson {
+						// 構造体のインスタンス化
+						memoEx := Memo{}
+						memoEx.Name = v.Name
+						memoEx.Text = v.Text
+						memoEx.CreatedAt = time.Now()
+						config.Db.Create(&memoEx)
+					}
 				}
 			} else {
 				//JSON形式でなければエラーを返す

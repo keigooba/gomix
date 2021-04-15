@@ -25,6 +25,8 @@ func main() {
 	// マイグレーション
 	config.Db.AutoMigrate(&memo.Memo{})
 
+	goroutine()
+
 	// エントリーポイントの設定・サーバー起動
 	err := StartMainServer()
 	if err != nil {

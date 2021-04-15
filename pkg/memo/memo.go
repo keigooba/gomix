@@ -2,9 +2,13 @@ package memo
 
 import (
 	"bufio"
+	crand "crypto/rand"
+	"crypto/sha256"
+	"encoding/binary"
 	"io"
 	"io/ioutil"
 	"log"
+	"math/rand"
 	"net/http"
 	"os"
 	"path"
@@ -16,6 +20,7 @@ import (
 	"gomix/config"
 	"gomix/pkg"
 
+	"github.com/dustin/go-humanize"
 	"github.com/mattn/go-isatty"
 )
 
@@ -63,11 +68,23 @@ func Index(w http.ResponseWriter, r *http.Request) {
 			log.Println(err)
 		}
 
+		// 乱数シード生成
+		var rTime int64
+		if err := binary.Read(crand.Reader, binary.LittleEndian, &rTime); err != nil {
+			rTime = time.Now().Unix()
+		}
+		rand.Seed(rTime)
+
+		// 10進数の文字列に変換
+		stringTime := strconv.FormatInt(rTime, 10)
+
 		// 以降はパスを物理パスとして扱うのでfilepathパッケージを使う filepath.Base ファイル名を得る
-		time := time.Now().Unix()
-		stringTime := strconv.FormatInt(time, 10)
 		docPath := "/doc/memo/data/" + "memo_" + stringTime + "." + extension
 		name := filepath.Join(pkg.Getpath(), "doc", "memo", "data", extension, filepath.Base(docPath))
+
+		// メモに記載された文字のバイト数をログに出力
+		log.Println(humanize.Bytes(uint64(len(memo))))
+
 		err = ioutil.WriteFile(name, []byte(memo), 0664)
 		if err != nil {
 			log.Println(err)
@@ -93,64 +110,42 @@ func Open(w http.ResponseWriter, r *http.Request) {
 
 	// 指定したファイルを開く
 	name := filepath.Join(pkg.Getpath(), "doc", "memo", "data", extension, filepath.Base(r.URL.Path))
+
 	f, err := os.Open(name)
 	if err != nil {
 		log.Println(err)
 	}
 	defer pkg.Close(f)
 
+	// ハッシュ作成
+	hash := sha256.New()
+
+	// ResponseWriterとハッシュ値に書き出す
+	Mw := io.MultiWriter(w, hash)
+
+	var b *bufio.Writer
+	// var written int64
 	if isatty.IsTerminal(f.Fd()) { //.Fd()で端末か判定
 		// 出力先が端末
-		_, err = io.Copy(w, f) //Writerにファイルを書き出す
+		_, err = io.Copy(Mw, f) //Writerにファイルを書き出す
 	} else {
 		//出力先がファイルやパイプ
-		b := bufio.NewWriter(w) //バッファリングする
+		b = bufio.NewWriter(Mw) //バッファリングする
 		_, err = io.Copy(b, f)  //Writerにファイルを書き出す
 	}
 
 	if err != nil {
 		log.Println("ファイルの書き出しに失敗しました。")
 	}
-}
 
-//以下機能は主要機能に導入なし
-
-// 一時ディレクトリの作成・削除
-func Dosomething() error {
-	err := os.MkdirAll("newdir", 0755)
-	if err != nil {
-		log.Println(err)
-	}
-	//  (2)ディレクトリ削除
-	defer func() {
-		err := os.RemoveAll("newdir")
+	if b != nil {
+		// バッファリングされていたときFlush()する
+		err := b.Flush()
 		if err != nil {
 			log.Println(err)
 		}
-	}()
-
-	f, err := os.Create("newdir/newfile")
-	if err != nil {
-		log.Println(err)
 	}
-	// (1)ファイルハンドルが閉じられる
-	defer pkg.Close(f)
 
-	return nil
-}
-
-// ファイルの作成・名前変更・deferの操作
-func MytemFile() (*os.File, error) {
-	file, err := ioutil.TempFile("", "temp") //適当なディレクトリ/tempランダム文字列 ファイルの作成
-	if err != nil {
-		return nil, err
-	}
-	// defer file.Close() //Closeが遅い deferはfunc()の呼び出し形式を取る 引数にはdeferを呼び出した時点の値が入る
-	pkg.Close(file) //Renameを実行するため、すぐ閉じる
-
-	// defer file.Close()するとwindowsではファイルが開かれていると認識され、Renameできない
-	if err = os.Rename(file.Name(), file.Name()+".go"); err != nil {
-		return nil, err
-	}
-	return file, nil
+	//  書き込んだバイト数・ファイル名・ハッシュ値を取得する
+	// fmt.Printf("Wrote %d, %s, %x", written, f.Name(), hash.Sum(nil))
 }

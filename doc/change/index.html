@@ -4,7 +4,7 @@
   <p>入力数値+19の全ての結果を表示します。</p>
   <input type="text" name="number" class="form-control" placeholder="数字を入力" required autofocus>
   {{if .Error}}
-  <p class="pt-2 text-danger font-weight-bold">{{.Error.Number}}</p>
+  <p class="pt-2 text-danger text-left font-weight-bold">{{.Error.Number}}</p>
   {{end}}
   <br />
   <button class="btn btn-lg btn-primary btn-block mb-4" type="submit">送信</button>

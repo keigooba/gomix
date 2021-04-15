@@ -16,7 +16,7 @@ func Command() error {
 	} else {
 		cmd = exec.Command("sh", "start.sh")
 	}
-	b, err := cmd.CombinedOutput()
+	b, err := cmd.CombinedOutput() //標準出力・標準エラー出力両方取れる
 	if err != nil {
 		return err
 	}

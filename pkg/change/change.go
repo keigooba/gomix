@@ -105,7 +105,7 @@ func Index(w http.ResponseWriter, r *http.Request) {
 				// 処理時間の計測 end
 				end := time.Now()
 				process := end.Sub(start).Seconds()
-				timeout := 0.01
+				timeout := 0.01 //タイムアウト
 				if process < timeout {
 					data.Numbers = numbers
 					pkg.GenerateHTML(w, data, "change/index")
@@ -113,11 +113,11 @@ func Index(w http.ResponseWriter, r *http.Request) {
 
 					// キャンセル可能なコンテキストを作る
 					ctx, cancel := context.WithCancel(context.Background())
-					defer cancel()
+					defer cancel() //メモリリークに繋がるため、必ず呼ぶ
 
-					// ctxを親にした、1秒でタイムアウトするコンテキストを作る
+					// ctxを親にした、タイムアウトするコンテキストを作る
 					ctxChild, cancelChild := context.WithTimeout(ctx, time.Duration(timeout)*time.Second)
-					defer cancelChild()
+					defer cancelChild()  //メモリリークに繋がるため、必ず呼ぶ
 
 					// どちらかのコンテキストが完了するまで待つ
 					select {

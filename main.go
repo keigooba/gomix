@@ -25,11 +25,13 @@ func main() {
 	// マイグレーション
 	config.Db.AutoMigrate(&memo.Memo{})
 
-	goroutine()
+	// サーバー停止の通知
+	go signalCall()
 
 	// エントリーポイントの設定・サーバー起動
 	err := StartMainServer()
 	if err != nil {
 		panic(err)
 	}
+
 }

@@ -25,7 +25,7 @@ func main() {
 	// マイグレーション
 	config.Db.AutoMigrate(&memo.Memo{})
 
-	// サーバー停止の通知
+	// サーバー停止の通知設定
 	go signalCall()
 
 	// エントリーポイントの設定・サーバー起動

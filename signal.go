@@ -23,11 +23,9 @@ func signalCall() {
 	signal.Notify(sigCh, trapSignals...)
 
 	for {
-		select {
-		case sig := <-sigCh: // signal.Notifyが受信されたら受け取る
+		sig := <-sigCh // signal.Notifyが受信されたら受け取る
 			log.Println("シグナルを受信しました", sig)
 			//終了させるためキャンセルを実行
 			log.Panic("サーバーが強制終了しました")
-		}
 	}
 }

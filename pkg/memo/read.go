@@ -23,27 +23,6 @@ type Memo struct {
 	CreatedAt time.Time
 }
 
-// mitchellh/cli使用の為、追加
-// 簡単なコマンドの説明を記述
-func (m *Memo) Synopsis() string {
-	return "メモを作成・検索・削除・編集を行う"
-}
-
-// 使い方 詳細なヘルプメッセージを返す
-func (m *Memo) Help() string {
-	return "コマンドを入力する"
-}
-
-func (m *Memo) Run(args []string) int {
-
-	// 作成
-	config.Db.Create(&m)
-
-	return 0 //正常終了
-}
-
-// ここまで
-
 func ReadJson(w http.ResponseWriter, r *http.Request) {
 
 	var data Data

@@ -3,6 +3,7 @@ package main
 //go:generate statik -src=doc
 
 import (
+	"fmt"
 	"gomix/config"
 	"gomix/pkg"
 	"gomix/pkg/change"
@@ -29,5 +30,5 @@ func StartMainServer() error {
 	http.HandleFunc("/read", memo.ReadJson)
 	http.HandleFunc("/data/", memo.Open)
 	http.HandleFunc("/stats", stats_api.Handler)
-	return http.ListenAndServe(config.Config.Port, nil)
+	return http.ListenAndServe(":"+fmt.Sprint(config.FlagPort), nil)
 }

@@ -16,7 +16,7 @@ func Index(w http.ResponseWriter, _ *http.Request) {
 	upVersion := "0.1.0" //buildされるアプリケーションのバージョン
 	json := &latest.JSON{
 		// JSONを返すURL
-		URL: config.Config.URL + "json",
+		URL: config.Config.URL + fmt.Sprint(config.FlagPort) + "/json",
 	}
 	res, _ := latest.Check(json, upVersion)
 	if res.Outdated {

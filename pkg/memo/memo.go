@@ -5,6 +5,7 @@ import (
 	crand "crypto/rand"
 	"crypto/sha256"
 	"encoding/binary"
+	"fmt"
 	"io"
 	"io/ioutil"
 	"log"
@@ -89,7 +90,7 @@ func Index(w http.ResponseWriter, r *http.Request) {
 		if err != nil {
 			log.Println(err)
 		}
-		url := config.Config.URL + r.URL.Path
+		url := config.Config.URL + fmt.Sprint(config.FlagPort) + r.URL.Path
 		http.Redirect(w, r, url, http.StatusSeeOther) //キャッシュを残したくないので、303指定
 	}
 }

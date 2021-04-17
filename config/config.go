@@ -5,7 +5,6 @@ package config
 
 import (
 	"encoding/json"
-	"fmt"
 	"gomix/utils"
 	"log"
 	"os"
@@ -17,7 +16,7 @@ import (
 )
 
 type ConfigList struct {
-	Port    string `json:"port"`
+	Port    int    `json:"port"`
 	LogFile string `json:"log_file"`
 	Static  string `json:"static"`
 	URL     string `json:"url"` //本番時up_urlに変更
@@ -27,6 +26,9 @@ type ConfigList struct {
 var Config ConfigList
 
 var Db *gorm.DB
+
+// ポート変更のためここで定義
+var FlagPort int
 
 func init() {
 	// Configの設定の読み込み
@@ -80,10 +82,10 @@ func LoadConfig() error {
 	}
 
 	// 環境変数の値の判定
-	format := "Port: %s\nLogFile: %s\nStatic: %s\nURL: %s\n"
-	_, err = fmt.Printf(format, Config.Port, Config.LogFile, Config.Static, Config.URL)
-	if err != nil {
-		return err
-	}
+	// format := "Port: %d\nLogFile: %s\nStatic: %s\nURL: %s\n"
+	// _, err = fmt.Printf(format, Config.Port, Config.LogFile, Config.Static, Config.URL)
+	// if err != nil {
+	// 	return err
+	// }
 	return nil //自明であればnilにする
 }

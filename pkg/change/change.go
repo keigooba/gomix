@@ -117,7 +117,7 @@ func Index(w http.ResponseWriter, r *http.Request) {
 
 					// ctxを親にした、タイムアウトするコンテキストを作る
 					ctxChild, cancelChild := context.WithTimeout(ctx, time.Duration(timeout)*time.Second)
-					defer cancelChild()  //メモリリークに繋がるため、必ず呼ぶ
+					defer cancelChild() //メモリリークに繋がるため、必ず呼ぶ
 
 					// どちらかのコンテキストが完了するまで待つ
 					select {
@@ -141,7 +141,7 @@ func Index(w http.ResponseWriter, r *http.Request) {
 							log.Printf("処理結果は%v個で20個を満たしています\n", len(numbers))
 						}
 						// キャッシュをクリアにするためリダイレクト
-						url := config.Config.URL + r.URL.Path
+						url := config.Config.URL + fmt.Sprint(config.FlagPort) + r.URL.Path
 						http.Redirect(w, r, url, http.StatusSeeOther) //キャッシュを残したくないので、303指定
 					}
 				}

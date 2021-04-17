@@ -1,7 +1,7 @@
 {
-  "port":":8080",
+  "port": 8080,
   "log_file":"log/system_",
   "static":"doc",
-  "url":"http://localhost:8080/",
+  "url":"http://localhost:",
   "up_url":"https://gomix.com/"
 }

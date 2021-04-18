@@ -8,6 +8,9 @@ import (
 
 var ManageMemo bool
 
+// Gitリポジトリのバージョン start.shで最新のバージョンに更新される
+var Version = "1.0.0"
+
 func CmdFlag() {
 
 	// サードパーティーkingpinでの実装の場合
@@ -23,9 +26,18 @@ func CmdFlag() {
 	flag.IntVar(&config.FlagPort, "port", config.Config.Port, "ポート設定が可能")
 	flag.IntVar(&config.FlagPort, "p", config.Config.Port, "ポート設定が可能(short)")
 
-	if ManageMemo {
-		fmt.Println("ManageMemo")
-	}
-	fmt.Println("port", config.FlagPort) //ポート確認
+	// Gitリポジトリのバージョン確認
+	var showVersion bool
 
+	// -v -versionが指定された場合にshowVerionが真になるよう定義
+	flag.BoolVar(&showVersion, "version", false, "バージョン確認")
+	flag.BoolVar(&showVersion, "v", false, "バージョン確認(short)")
+	flag.Parse() //引数からオプションをパースする
+
+	//ポート確認
+	fmt.Println("port", config.FlagPort)
+	if showVersion {
+		// バージョン番号を表示する
+		fmt.Println("version", Version)
+	}
 }

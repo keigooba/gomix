@@ -1,6 +1,7 @@
 package main
 
 import (
+	"flag"
 	"fmt"
 	"os"
 
@@ -8,7 +9,7 @@ import (
 )
 
 type AddCommand struct {
-	Debug string
+	Debug bool
 }
 
 // 簡単なコマンドの説明を記述
@@ -23,7 +24,18 @@ func (c *AddCommand) Help() string {
 
 func (c *AddCommand) Run(args []string) int {
 	// TODOを追加するコード
-	fmt.Println("ここ")
+	var debug bool
+
+	flags := flag.NewFlagSet("add", flag.ContinueOnError)
+	flags.BoolVar(&debug, "debug", false, "Run as DEBUG mode")
+
+	// aregはサブコマンドの引数を受け取れる
+	fmt.Println(args)
+	if err := flags.Parse(args); err != nil {
+		fmt.Println("koi")
+		return 1
+	}
+
 	return 0
 }
 
@@ -37,7 +49,7 @@ func main() {
 
 	// サブコマンドを登録する
 	// cli.CommandFactoryという関数である
-	var debug = "koko"
+	var debug = false
 	c.Commands = map[string]cli.CommandFactory{
 		"add": func() (cli.Command, error) {
 			return &AddCommand{

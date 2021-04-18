@@ -39,6 +39,7 @@ func init() {
 
 	// 現在の日付
 	nowDate := time.Now().Format("200601")
+
 	// ログファイルの設定
 	err = utils.LoggingSettings(Config.LogFile + nowDate + ".log")
 	if err != nil {

@@ -28,7 +28,7 @@ func Index(w http.ResponseWriter, _ *http.Request) {
 func Getpath() (cwd string) {
 	cwd, err := os.Getwd()
 	if err != nil {
-		log.Fatal(err)
+		log.Println("カレントディレクトリの取得に失敗しました:", err)
 	}
 	return cwd
 }

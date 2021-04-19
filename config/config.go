@@ -5,6 +5,7 @@ package config
 
 import (
 	"encoding/json"
+	"fmt"
 	"gomix/utils"
 	"log"
 	"os"
@@ -41,7 +42,13 @@ func init() {
 	nowDate := time.Now().Format("200601")
 
 	// ログファイルの設定
-	err = utils.LoggingSettings(Config.LogFile + nowDate + ".log")
+	output := &utils.Output{OutStream: os.Stdout, ErrStream: os.Stderr}
+	if Pwd != "" {
+		// 絶対パスを指定
+		err = utils.LoggingSettings(Pwd+"/"+Config.LogFile+nowDate+".log", output)
+	} else {
+		err = utils.LoggingSettings(Config.LogFile+nowDate+".log", output)
+	}
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -62,8 +69,12 @@ func LoadConfig() error {
 	cwd, err := os.Getwd()
 	if err != nil {
 		return err
+	} else if utils.Pwd != "" || cwd != utils.Pwd {
+		cwd = utils.Pwd
 	}
+
 	fname := filepath.Join(cwd, "config", "config.json")
+	fmt.Println(fname)
 	f, err := pkger.Open(fname)
 	if err != nil {
 		return err
@@ -83,10 +94,10 @@ func LoadConfig() error {
 	}
 
 	// 環境変数の値の判定
-	// format := "Port: %d\nLogFile: %s\nStatic: %s\nURL: %s\n"
-	// _, err = fmt.Printf(format, Config.Port, Config.LogFile, Config.Static, Config.URL)
-	// if err != nil {
-	// 	return err
-	// }
+	format := "Port: %d\nLogFile: %s\nStatic: %s\nURL: %s\n"
+	_, err = fmt.Printf(format, Config.Port, Config.LogFile, Config.Static, Config.URL)
+	if err != nil {
+		return err
+	}
 	return nil //自明であればnilにする
 }

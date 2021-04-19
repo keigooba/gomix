@@ -2,11 +2,15 @@ package utils
 
 import (
 	"fmt"
+	"os"
 	"os/exec"
 	"runtime"
 
 	"golang.org/x/text/encoding/japanese"
 )
+
+// 現在の絶対パス（適宜変更必要あり、テスト用）
+const Pwd = "/Users/keigo/Desktop/gomix" // テスト時以外は空にする
 
 // コマンドの実行
 func Command() error {
@@ -14,7 +18,14 @@ func Command() error {
 	if runtime.GOOS == "windows" {
 		cmd = exec.Command("start.bat")
 	} else {
-		cmd = exec.Command("sh", "start.sh")
+		cwd, err := os.Getwd()
+		if err != nil {
+			return err
+		} else if Pwd != "" || cwd != Pwd {
+			cmd = exec.Command("sh", Pwd+"/"+"start.sh")
+		} else {
+			cmd = exec.Command("sh", "start.sh")
+		}
 	}
 	b, err := cmd.CombinedOutput() //標準出力・標準エラー出力両方取れる
 	if err != nil {

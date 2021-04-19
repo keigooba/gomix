@@ -1,7 +1,8 @@
 package main
 
 import (
-	"gomix/cli"
+	"fmt"
+	cliCmd "gomix/cli"
 	"gomix/cli/c_memo"
 	"gomix/config"
 	"gomix/pkg/memo"
@@ -14,7 +15,7 @@ func main() {
 	config.Db.AutoMigrate(&memo.Memo{})
 
 	// オプションコマンドの設定
-	cli.CmdFlag()
+	cliCmd.CmdFlag()
 
 	// コマンド入力の有無
 	if len(os.Args) > 1 {
@@ -23,11 +24,13 @@ func main() {
 		go signalCall()
 
 		// -memo,-mが入力された時
-		if cli.ManageMemo {
+		if cliCmd.ManageMemo {
 			// サブコマンドの設定
-			c_memo.CliMemo()
+			exitCode := c_memo.CliMemo()
+			fmt.Printf("終了ステータスコードは%dです", exitCode)
+			// サブコマンド使用時にはexitする
+			os.Exit(exitCode)
 		}
-
 	}
 
 	// エントリーポイントの設定・サーバー起動

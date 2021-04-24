@@ -42,10 +42,6 @@ func Change(number int) (data Number) {
 	return data
 }
 
-func Worker(ch chan int) {
-
-}
-
 // Index 2進数・18進数変換フォーム
 func Index(w http.ResponseWriter, r *http.Request) {
 	if r.Method == "GET" {
@@ -99,6 +95,7 @@ func Index(w http.ResponseWriter, r *http.Request) {
 					ch <- number + i
 				}
 
+				// この時点でゴルーチンに対するチャネルの送信は終了しているため閉じる
 				close(ch)
 
 				wg.Wait()

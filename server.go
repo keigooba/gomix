@@ -8,6 +8,7 @@ import (
 	"gomix/pkg"
 	"gomix/pkg/change"
 	"gomix/pkg/memo"
+	"gomix/pkg/reflect"
 	"net/http"
 
 	stats_api "github.com/fukata/golang-stats-api-handler"
@@ -29,6 +30,7 @@ func StartMainServer() error {
 	http.HandleFunc("/memo", memo.Index)
 	http.HandleFunc("/read", memo.ReadJson)
 	http.HandleFunc("/data/", memo.Open)
+	http.HandleFunc("/reflect", reflect.Index)
 	http.HandleFunc("/stats", stats_api.Handler)
 	return http.ListenAndServe(":"+fmt.Sprint(config.FlagPort), nil)
 }

@@ -2,7 +2,6 @@ package utils
 
 import (
 	"fmt"
-	"os"
 	"os/exec"
 	"runtime"
 
@@ -10,7 +9,8 @@ import (
 )
 
 // 現在の絶対パス（適宜変更必要あり、テスト用）
-const Pwd = "/Users/keigo/Desktop/gomix" // テスト時以外は空にする
+const Pwd = "" //通常は空で設定
+// const Pwd = "/Users/keigo/Desktop/gomix" // テスト時以外は空にする
 
 // コマンドの実行
 func Command() error {
@@ -18,10 +18,7 @@ func Command() error {
 	if runtime.GOOS == "windows" {
 		cmd = exec.Command("start.bat")
 	} else {
-		cwd, err := os.Getwd()
-		if err != nil {
-			return err
-		} else if Pwd != "" || cwd != Pwd {
+		if Pwd != "" {
 			cmd = exec.Command("sh", Pwd+"/"+"start.sh")
 		} else {
 			cmd = exec.Command("sh", "start.sh")

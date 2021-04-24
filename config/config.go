@@ -69,12 +69,11 @@ func LoadConfig() error {
 	cwd, err := os.Getwd()
 	if err != nil {
 		return err
-	} else if utils.Pwd != "" || cwd != utils.Pwd {
+	} else if utils.Pwd != "" {
 		cwd = utils.Pwd
 	}
 
 	fname := filepath.Join(cwd, "config", "config.json")
-	fmt.Println(fname)
 	f, err := pkger.Open(fname)
 	if err != nil {
 		return err

@@ -235,3 +235,56 @@ package main
 // 		log.Panicf("[info] %s", s) //.String()が入る
 // 	}
 // }
+
+// func readFromFile(ch chan []byte, f *os.File) {
+// 	defer close(ch)
+// 	defer f.Close()
+
+// 	buf := make([]byte, 4096)
+// 	for {
+// 		if n, err := f.Read(buf); err == nil {
+// 			ch <- buf[:n]
+// 		}
+// 	}
+// }
+
+// func makeChannelForFiles(files []fs.FileInfo) ([]reflect.Value, error) {
+// 	cs := make([]reflect.Value, len(files))
+
+// 	for i, file := range files {
+// 		// データ送信のチャネル
+// 		ch := make(chan []byte)
+
+// 		// ファイルをオープン
+// 		f, err := os.Open(file.Name())
+// 		if err != nil {
+// 			return nil, err
+// 		}
+// 		go readFromFile(ch, f)
+
+// 		cs[i] = reflect.ValueOf(ch)
+// 	}
+// 	return cs, nil
+// }
+
+// func makeSelectCases(cs ...reflect.Value) ([]reflect.SelectCase, error) {
+// 	cases := make([]reflect.SelectCase, len(cs))
+// 	for i, ch := range cs {
+// 		if ch.Kind() != reflect.Chan {
+// 			return nil, errors.New("チャンネルが必要です")
+// 		}
+// 		cases[i] = reflect.SelectCase{
+// 			Chan: ch,
+// 			Dir:  reflect.SelectRecv,
+// 		}
+// 	}
+// 	return cases, nil
+// }
+
+// func Index(w http.ResponseWriter, r *http.Request) {
+// 	files, err := ioutil.ReadDir("doc/memo/data/json")
+// 	if err != nil {
+// 		log.Panicln(err)
+// 	}
+// 	makeChannelForFiles(files)
+// }

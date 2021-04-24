@@ -53,7 +53,7 @@ func Index(w http.ResponseWriter, r *http.Request) {
 
 	} else if r.Method == "POST" {
 
-		memo := r.PostFormValue("memo")
+		memo := r.FormValue("memo")
 		var extension string
 		if string(memo[0]) == "[" {
 			extension = "json"

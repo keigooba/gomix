@@ -59,7 +59,7 @@ func init() {
 	}
 
 	// DB接続
-	Db = utils.GormConnect()
+	// Db = utils.GormConnect()
 
 }
 

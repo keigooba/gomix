@@ -4,15 +4,13 @@ import (
 	"fmt"
 	cliCmd "gomix/cli"
 	"gomix/cli/c_memo"
-	"gomix/config"
-	"gomix/pkg/memo"
 	"os"
 )
 
 func main() {
 
 	// マイグレーション
-	config.Db.AutoMigrate(&memo.Memo{})
+	// config.Db.AutoMigrate(&memo.Memo{})
 
 	// オプションコマンドの設定
 	cliCmd.CmdFlag()
@@ -38,5 +36,4 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
-
 }

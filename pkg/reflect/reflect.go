@@ -12,7 +12,7 @@ import (
 	"sync"
 )
 
-func Index(w http.ResponseWriter, r *http.Request) {
+func Index(_ http.ResponseWriter, _ *http.Request) {
 	chs := make(chan []byte)
 	files, err := ioutil.ReadDir("doc/memo/data/txt")
 	if err != nil {
@@ -25,7 +25,7 @@ func Index(w http.ResponseWriter, r *http.Request) {
 		if err != nil {
 			return
 		}
-		defer f.Close()
+		defer pkg.Close(f)
 		// ファイルから読み込んだバイト列を逐次chに送る
 		wg.Add(1)
 		go func() {
@@ -47,8 +47,14 @@ func Index(w http.ResponseWriter, r *http.Request) {
 			rv := reflect.ValueOf(in)
 			i := rv.Kind()
 			if fmt.Sprint(i) == "slice" {
-				os.Stdout.Write(in)
-				os.Stdout.Write(vec)
+				_, err := os.Stdout.Write(in)
+				if err != nil {
+					log.Println(err)
+				}
+				_, err = os.Stdout.Write(vec)
+				if err != nil {
+					log.Println(err)
+				}
 			}
 		}
 	}()

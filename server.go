@@ -35,7 +35,7 @@ func StartMainServer() error {
 	http.HandleFunc("/stats", stats_api.Handler)
 	port := os.Getenv("PORT")
 	if port != "" {
-		fmt.Println(port)
+		fmt.Printf("これが%v番号です", port)
 		return http.ListenAndServe(":"+port, nil)
 	} else {
 		return http.ListenAndServe(":"+fmt.Sprint(config.FlagPort), nil)

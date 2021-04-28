@@ -33,6 +33,7 @@ func StartMainServer() error {
 	http.HandleFunc("/data/", memo.Open)
 	http.HandleFunc("/reflect", reflect.Index)
 	http.HandleFunc("/stats", stats_api.Handler)
+	fmt.Println("koko")
 	port := os.Getenv("PORT")
 	if port != "" {
 		fmt.Printf("これが%v番号です", port)

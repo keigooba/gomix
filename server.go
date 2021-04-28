@@ -38,6 +38,7 @@ func StartMainServer() error {
 		fmt.Printf("これが%v番号です", port)
 		return http.ListenAndServe(":"+port, nil)
 	} else {
+		fmt.Printf("これが%v番号です", port)
 		return http.ListenAndServe(":"+fmt.Sprint(config.FlagPort), nil)
 	}
 }

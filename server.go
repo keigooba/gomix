@@ -10,6 +10,7 @@ import (
 	"gomix/pkg/memo"
 	"gomix/pkg/reflect"
 	"net/http"
+	"os"
 
 	stats_api "github.com/fukata/golang-stats-api-handler"
 	"github.com/markbates/pkger"
@@ -32,10 +33,10 @@ func StartMainServer() error {
 	http.HandleFunc("/data/", memo.Open)
 	http.HandleFunc("/reflect", reflect.Index)
 	http.HandleFunc("/stats", stats_api.Handler)
-	// port := os.Getenv("PORT")
-	// if port != "" {
-	// 	return http.ListenAndServe(":"+port, nil)
-	// } else {
-	return http.ListenAndServe(":"+fmt.Sprint(config.FlagPort), nil)
-	// }
+	port := os.Getenv("PORT")
+	if port != "" {
+		return http.ListenAndServe(":"+port, nil)
+	} else {
+		return http.ListenAndServe(":"+fmt.Sprint(config.FlagPort), nil)
+	}
 }

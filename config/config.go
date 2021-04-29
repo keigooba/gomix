@@ -20,7 +20,7 @@ type ConfigList struct {
 	Port    int    `json:"port"`
 	LogFile string `json:"log_file"`
 	Static  string `json:"static"`
-	URL     string `json:"url"` //本番時up_urlに変更
+	URL     string `json:"up_url"` //本番時up_urlに変更
 }
 
 // Config Configの定義

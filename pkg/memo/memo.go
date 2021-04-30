@@ -16,6 +16,7 @@ import (
 	"path/filepath"
 	"strconv"
 	"strings"
+	"syscall"
 	"time"
 
 	"gomix/config"
@@ -86,7 +87,9 @@ func Index(w http.ResponseWriter, r *http.Request) {
 		// メモに記載された文字のバイト数をログに出力
 		log.Println(humanize.Bytes(uint64(len(memo))))
 
+		defaultUmask := syscall.Umask(0) //umask値を変更
 		err = ioutil.WriteFile(name, []byte(memo), 0777) // os.ModePerm Unixパーミッションビット、0o777
+		syscall.Umask(defaultUmask)
 		if err != nil {
 			log.Println(err)
 		}

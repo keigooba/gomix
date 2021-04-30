@@ -20,7 +20,7 @@ var LogBuffer bytes.Buffer
 
 // LoggingSettings ログファイルの出力
 func LoggingSettings(logFile string, output *Output) error {
-	logfile, err := os.OpenFile(logFile, os.O_RDWR|os.O_CREATE|os.O_APPEND, 0666)
+	logfile, err := os.OpenFile(logFile, os.O_RDWR|os.O_CREATE|os.O_APPEND, 0777)
 	if err != nil {
 		return fmt.Errorf("ログファイルの作成に失敗しました: %s", err)
 	}

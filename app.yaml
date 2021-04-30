@@ -1,21 +1,15 @@
-# YAMLのルールに従って記述された設定ファイルです。
-# App EngineのGoアプリを構成するには、app.yamlファイルを使用します。(固有のファイル名を指定可能)
+# Copyright 2019 Google LLC
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     https://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
 
-# Goランタイム環境を選択します。
-runtime: go
-
-# 使用するGoランタイム環境のバージョンです。
-# go1はGoの最新リリース(現時点でGo1.9)のエイリアスです。
-api_version: go1
-
-# 必須要素。URL パターンと処理方法の説明のリストを定義します。
-handlers:
-
-# handlersで必要な要素。正規表現を使用したURLパターンを定義します。
-# 先端の「- 」は、ハッシュのリストです。
-# リストとするためにはハイフンを使い、さらにインデントを揃えてハッシュのキーを列挙します
-- url: /
-
-# アプリケーションのルート ディレクトリを起点として、このスクリプトへのパスを指定します。
-# Goアプリの場合、scriptには常に_go_appの値を含める必要があります。
-  script: _go_app
+runtime: go115

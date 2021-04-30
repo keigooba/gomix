@@ -64,7 +64,7 @@ func Index(w http.ResponseWriter, r *http.Request) {
 		// "/"でパス文字列を結合しない 物理パスを操作する場合filepathを使う
 		dir := filepath.Join(pkg.Getpath(), "doc", "memo", "data", extension)
 		// dirのディレクトリを作成する MkdirAll 必要な親ディレクトリ全てを作成する
-		err := os.MkdirAll(dir, os.ModePerm) // os.ModePerm Unixパーミッションビット、0o777
+		err := os.MkdirAll(dir, 0777) // os.ModePerm Unixパーミッションビット、0o777
 		if err != nil {
 			log.Println(err)
 		}
@@ -86,7 +86,7 @@ func Index(w http.ResponseWriter, r *http.Request) {
 		// メモに記載された文字のバイト数をログに出力
 		log.Println(humanize.Bytes(uint64(len(memo))))
 
-		err = ioutil.WriteFile(name, []byte(memo), os.ModePerm) // os.ModePerm Unixパーミッションビット、0o777
+		err = ioutil.WriteFile(name, []byte(memo), 0777) // os.ModePerm Unixパーミッションビット、0o777
 		if err != nil {
 			log.Println(err)
 		}

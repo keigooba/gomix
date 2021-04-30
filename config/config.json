@@ -3,5 +3,5 @@
   "log_file":"log/system_",
   "static":"doc",
   "url":"http://localhost:",
-  "up_url":"http://34.121.125.105"
+  "up_url":"http://34.121.125.105:"
 }

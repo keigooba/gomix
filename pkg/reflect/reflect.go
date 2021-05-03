@@ -3,6 +3,7 @@ package reflect
 import (
 	"fmt"
 	"gomix/pkg"
+	"io"
 	"io/ioutil"
 	"log"
 	"net/http"
@@ -12,7 +13,7 @@ import (
 	"sync"
 )
 
-func Index(_ http.ResponseWriter, _ *http.Request) {
+func Index(w http.ResponseWriter, _ *http.Request) {
 	chs := make(chan []byte)
 	files, err := ioutil.ReadDir("doc/memo/data/txt")
 	if err != nil {
@@ -47,11 +48,11 @@ func Index(_ http.ResponseWriter, _ *http.Request) {
 			rv := reflect.ValueOf(in)
 			i := rv.Kind()
 			if fmt.Sprint(i) == "slice" {
-				_, err := os.Stdout.Write(in)
+				_, err := io.WriteString(w, string(in))
 				if err != nil {
 					log.Println(err)
 				}
-				_, err = os.Stdout.Write(vec)
+				_, err = io.WriteString(w, string(vec))
 				if err != nil {
 					log.Println(err)
 				}

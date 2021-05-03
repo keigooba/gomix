@@ -55,7 +55,7 @@ func init() {
 	// コマンドの実行
 	err = utils.Command()
 	if err != nil {
-		log.Fatal(err)
+		log.Println(err) //本番のroot権限ではコマンド実行できないため、出力のみ
 	}
 
 	// DB接続

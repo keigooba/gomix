@@ -3,9 +3,10 @@
 ## 概要
 
 書籍「みんなのGo言語」をベースに様々なツールを作成したアプリ gomix  
-数値変換・メモJSONファイル作成・コマンドラインツールなど、様々なツールを作成したアプリを、GCEへデプロイ  
+数値変換・メモJSONファイル作成・コマンドラインツールなど、様々なツールを作成したアプリを  
+GCEへデプロイ  
 
-GCEの構成は下記のURLのインフラ構成図を御覧ください。
+GCEの構成は下記のURLのインフラ構成図を御覧ください。  
 https://drive.google.com/file/d/1JReE-3uQj2W4v8GXK0GqYEqHXG_EUd2e/view?usp=sharing
 
 ## 初期設定
@@ -26,7 +27,7 @@ https://drive.google.com/file/d/1JReE-3uQj2W4v8GXK0GqYEqHXG_EUd2e/view?usp=shari
    - osパッケージのみを用いたメモ帳の作成
    - ディレクトリの自動作成・Unix タイムを用いてファイル名を動的変更
    - ioutil.ReadDir のディレクトリ検索・path.Match のファイル名一致
-   - JSON形式で入力したファイルをgormを使用し、DB保存
+   - JSON形式で入力したファイルをORM(gorm)を使用してDB保存
    - バッファリング、go-isattyによる出力先の判別、ハッシュ値の生成
    - humanizeを用いたバイト数のログ出力
 3. コマンドラインツールによるORMの操作  

@@ -45,4 +45,5 @@
 
 ## 学習記録・作成物
 
-1. [みんなのGo言語](https://www.amazon.co.jp/%E6%94%B9%E8%A8%822%E7%89%88-%E3%81%BF%E3%82%93%E3%81%AA%E3%81%AEGo%E8%A8%80%E8%AA%9E-%E6%9D%BE%E6%9C%A8-%E9%9B%85%E5%B9%B8/dp/4297107279) 3月26日~4月24日
+1. [みんなのGo言語](https://www.amazon.co.jp/%E6%94%B9%E8%A8%822%E7%89%88-%E3%81%BF%E3%82%93%E3%81%AA%E3%81%AEGo%E8%A8%80%E8%AA%9E-%E6%9D%BE%E6%9C%A8-%E9%9B%85%E5%B9%B8/dp/4297107279) 3月26日~4月24日  
+2. [現役エンジニアが教える、手を動かして学ぶGoogle Cloud Platform(GCP) 入門](https://www.udemy.com/share/1024VCAEYcdVpUQHQD/) 4月25日~5月4日

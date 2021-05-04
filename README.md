@@ -6,7 +6,7 @@
 数値変換・メモJSONファイル作成・コマンドラインツールなど、様々なツールを作成したアプリを  
 GCEへデプロイ  
 
-GCEの構成は下記のURLのインフラ構成図を御覧ください。  
+GCEの構成は下記URLのインフラ構成図を御覧ください。  
 https://drive.google.com/file/d/1JReE-3uQj2W4v8GXK0GqYEqHXG_EUd2e/view?usp=sharing
 
 ## 初期設定

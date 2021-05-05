@@ -11,7 +11,7 @@
 GCEの構成は下記URLのインフラ構成図を御覧ください。  
 https://drive.google.com/file/d/1JReE-3uQj2W4v8GXK0GqYEqHXG_EUd2e/view?usp=sharing
 
-GAE+DataStore+CloudSQLでもデプロイしました。  
+GAE+CloudSQLでもデプロイしました。(Datastore導入予定)  
 サイト:https://hip-cyclist-310707.df.r.appspot.com  
 ソースコード:https://github.com/keigooba/gomixGAE.git
 

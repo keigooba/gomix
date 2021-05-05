@@ -1,5 +1,7 @@
 # gomix
 
+サイトURL:http://gomix.work
+
 ## 概要
 
 書籍「みんなのGo言語」をベースに様々なツールを作成したアプリ gomix  
@@ -11,7 +13,7 @@ https://drive.google.com/file/d/1JReE-3uQj2W4v8GXK0GqYEqHXG_EUd2e/view?usp=shari
 
 GAE+DataStore+CloudSQLでもデプロイしました。
 サイト:https://hip-cyclist-310707.df.r.appspot.com
-ソースコード:https://hip-cyclist-310707.df.r.appspot.com
+ソースコード:https://github.com/keigooba/gomixGAE.git
 
 ## 初期設定
 

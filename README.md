@@ -5,8 +5,8 @@
 ## 概要
 
 書籍「みんなのGo言語」をベースに様々なツールを作成したアプリ gomix  
-数値変換・メモJSONファイル作成・コマンドラインツールなど、様々なツールを作成したアプリを  
-GCEへデプロイ  
+数値変換・メモJSONファイル作成・コマンドラインツールなど  
+様々なツールを作成したアプリをGCEへデプロイ  
 
 GCEの構成は下記URLのインフラ構成図を御覧ください。  
 https://drive.google.com/file/d/1JReE-3uQj2W4v8GXK0GqYEqHXG_EUd2e/view?usp=sharing
